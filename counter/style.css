@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+    font-size: 16px;
+
+    --text-color-dec: hsl(250, 50%, 15%);
+    --border-color-dec: hsl(250, 60%, 35%);
+    --main-color-dec: hsl(250, 75%, 70%);
+    --main-color-hover-dec: hsl(250, 75%, 67%);
+    --second-color-dec: hsl(250, 50%, 50%);
+    --shadow-color-dec: hsla(250, 75%, 67%, 20%);
+
+    --text-color-inc: hsl(140, 50%, 15%);
+    --border-color-inc: hsl(140, 60%, 35%);
+    --main-color-inc: hsl(140, 75%, 70%);
+    --main-color-hover-inc: hsl(135, 75%, 67%);
+    --second-color-inc: hsl(140, 50%, 50%);
+    --shadow-color-inc: hsla(140, 75%, 50%, 20%);
+
+    --text-color-res: hsl(205, 50%, 15%);
+    --border-color-res: hsl(205, 60%, 35%);
+    --main-color-res: hsl(205, 75%, 70%);
+    --main-color-hover-res: hsl(205, 75%, 67%);
+    --second-color-res: hsl(205, 50%, 50%);
+    --shadow-color-res: hsla(205, 75%, 67%, 20%);
+
+    --text-color: #202020;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Roboto Mono", monospace, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.counter-wrapper {
+    position: relative;
+    top: -5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    color: var(--text-color);
+    padding: 2rem;
+}
+
+.counter {
+    font-size: 4rem;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.button-section {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.button,
+.front {
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: "Roboto Mono", monospace, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 130px;
+}
+
+.button {
+    height: 58px;
+    transition: all 100ms ease;
+}
+
+.front {
+    display: block;
+    padding: 1rem 1.5rem;
+    position: relative;
+    bottom: 10px;
+    position: relative;
+    left: -2px;
+    transition: all 100ms ease;
+}
+
+.button:hover .front {
+    transform: translateY(3px);
+}
+
+.button:active .front {
+    transform: translateY(8px);
+}
+
+
+#decrease {
+    color: var(--text-color-dec);
+    background-color: var(--second-color-dec);
+    border: 2px solid var(--border-color-dec);
+    box-shadow: 0 10px var(--shadow-color-dec);
+}
+
+#decrease:hover {
+    box-shadow: 0 7px var(--shadow-color-dec);
+}
+
+#decrease:active {
+    box-shadow: 0 0 var(--shadow-color-dec);
+}
+
+#decrease .front {
+    background-color: var(--main-color-dec);
+    border: 2px solid var(--border-color-dec);
+}
+
+#decrease:hover .front,
+#decrease:active .front {
+    background-color: var(--main-color-hover-dec);
+}
+
+
+#increase {
+    color: var(--text-color-inc);
+    background-color: var(--second-color-inc);
+    border: 2px solid var(--border-color-inc);
+    box-shadow: 0 10px var(--shadow-color-inc);
+}
+
+#increase:hover {
+    box-shadow: 0 7px var(--shadow-color-inc);
+}
+
+#increase:active {
+    box-shadow: 0 0 var(--shadow-color-inc);
+}
+
+#increase .front {
+    background-color: var(--main-color-inc);
+    border: 2px solid var(--border-color-inc);   
+}
+
+#increase:hover .front,
+#increase:active .front {
+    background-color: var(--main-color-hover-inc);
+}
+
+
+#reset {
+    color: var(--text-color-res);
+    background-color: var(--second-color-res);
+    border: 2px solid var(--border-color-res);
+    box-shadow: 0 10px var(--shadow-color-res);
+}
+
+#reset:hover {
+    box-shadow: 0 7px var(--shadow-color-res);
+}
+
+#reset:active {
+    box-shadow: 0 0 var(--shadow-color-res);
+}
+
+#reset .front {
+    background-color: var(--main-color-res);
+    border: 2px solid var(--border-color-res);
+}
+
+#reset:hover .front,
+#reset:active .front {
+    background-color: var(--main-color-hover-res);
+}
+
+
+/* #decrease {
+    color: var(--text-color-dec);
+    background-color: var(--main-color-dec);
+    min-width: 140px;
+    border: 2px solid var(--border-color-dec);
+    box-shadow: 0 10px 0 0px var(--second-color-dec), 
+                0 10px 0 var(--border-color-dec),
+                0 20px var(--shadow-color-dec);
+}
+
+#increase {
+    color: var(--text-color-inc);
+    background-color: var(--main-color-inc);
+    min-width: 140px;
+    border: 2px solid var(--border-color-inc);
+    box-shadow: 0 10px 0 -2px var(--second-color-inc), 
+                0 10px 0 var(--border-color-inc),
+                0 20px var(--shadow-color-inc);
+}
+
+#reset {
+    color: var(--text-color-res);
+    background-color: var(--main-color-res);
+    min-width: 140px;
+    border: 2px solid var(--border-color-res);
+    box-shadow: 0 10px 0 -2px var(--second-color-res), 
+                0 10px 0 var(--border-color-res),
+                0 20px var(--shadow-color-res);
+}
+
+#decrease:hover {
+    background-color: var(--main-color-hover-dec);
+    transform: translate(0, 3px);
+    box-shadow: 0 7px 0 0px var(--second-color-dec), 
+                0 7px 0 var(--border-color-dec),
+                0 15px var(--shadow-color-dec);;
+}
+
+#increase:hover {
+    background-color: var(--main-color-hover-inc);
+    transform: translate(0, 3px);
+    box-shadow: 0 7px 0 -2px var(--second-color-inc), 
+                0 7px 0 var(--border-color-inc),
+                0 15px var(--shadow-color-inc);
+}
+
+#reset:hover {
+    background-color: var(--main-color-hover-res);
+    transform: translate(0, 3px);
+    box-shadow: 0 7px 0 -2px var(--second-color-res), 
+                0 7px 0 var(--border-color-res),
+                0 15px var(--shadow-color-res);
+}
+
+#decrease:active {
+    transform: translate(0, 10px);
+    box-shadow: 0 0 0 -2px var(--second-color-dec), 
+                0 0 0 var(--border-color-dec) ;
+}
+
+#increase:active {
+    transform: translate(0, 10px);
+    box-shadow: 0 0 0 -2px var(--second-color-inc), 
+                0 0 0 var(--border-color-inc) ;
+}
+
+#reset:active {
+    transform: translate(0, 10px);
+    box-shadow: 0 0 0 -2px var(--second-color-res), 
+                0 0 0 var(--border-color-res) ;
+} */

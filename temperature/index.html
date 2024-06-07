@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script defer src="index.js"></script>
+  <title>temperature conversor</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="panel">
+      
+      <h1 class="title">tempearture conversor</h1>
+
+      <section class="conversor">
+        
+        <div class="display">
+          <div class="display-field">
+            <input type="text" class="input" id="temp-input" value="0">
+            <select name="input-select" id="input-select" class="select">
+              <option value="celsius" selected>celsius</option>
+              <option value="fahrenheit">fahrenheit</option>
+              <option value="kelvin">kelvin</option>
+            </select>
+          </div>
+
+          <button class="button button-swap" id="swap-button"> <img src="../assets/swap_icon.svg"> </button>
+          
+          <div class="display-field">
+            <input type="text" class="input" id="temp-output" value="32">
+            <select name="output-select" id="output-select" class="select">
+              <option value="celsius">celsius</option>
+              <option value="fahrenheit" selected>fahrenheit</option>
+              <option value="kelvin">kelvin</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="button button-convert" id="convert-button">
+          <span class="front">convert</span>
+        </button>
+
+
+        <!-- <div class="controllers">
+          <div class="input-field">
+            <input type="radio" name="type-conversion" class="input" id="celsius-to-fahrenheit">
+            <label for="celsius-to-fahrenheit">celcius to fahrenheit</label>
+          </div>
+
+          <div class="input-field">
+            <input type="radio" name="type-conversion" class="input" id="fahrenheit-to-celsius">
+            <label for="fahrenheit-to-celsius">fahrenheit to celsius</label>
+          </div>
+          
+          <button class="button" id="convert-button">
+            <span class="front">convert</span>
+          </button>
+        </div> -->
+        
+      </section>
+    
+    </div>
+  </div>
+</body>
+</html>

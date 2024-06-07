@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+    <link rel="icon" href="resources/tasklist_white_icon.svg">
+    <title>task list</title>
+    <script defer src="index.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+
+    <div class="tasklist">
+
+      <div class="tasklist-header">
+        <div class="tasklist-name">
+          <img class="tasklist-icon" src="./resources/tasklist_black_icon.svg" alt="tasklist icon">
+          <h1 class="tasklist-title">Task list</h1>
+        </div>
+        
+        <div class="options-wrapper">
+          <div class="options-button">
+            <img src="./resources/opt_icon.svg" alt="options icon">
+          </div>
+          <div class="options-menu">
+            <button class="button remove" id="tasklist-opt-rem-all">
+              <img src="./resources/remove_black_icon.svg" alt="remove all">
+              <span>Remove all tasks</span>
+            </button>
+            <button class="button remove" id="tasklist-opt-rem-completed">
+              <img src="./resources/remove_black_icon.svg" alt="remove all">
+              <span>Remove completed tasks</span>
+            </button>
+            <button class="button hide" id="tasklist-opt-hide-completed">
+              <img src="./resources/hide_black_icon.svg" alt="remove all">
+              <span>Hide completed tasks</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="list">
+
+        <div class="task">
+          <input type="checkbox" class="input-checkbox">
+          
+          <span class="task-description">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem, veniam. 
+            Autem dolorem cupiditate, sapiente atque nobis laudantium molestiae ex
+            debitis. Libero distinctio aut illum quia officiis obcaecati quaerat?
+            Aut, voluptas?
+          </span>
+          
+          <div class="options-wrapper">
+            <div class="options-button">
+              <img src="./resources/opt_icon.svg" alt="options icon">
+            </div>
+            <div class="options-menu">
+              <button class="button edit">
+                <img src="./resources/edit_black_icon.svg" alt="edit">
+                <span>Edit</span>
+              </button>
+              <button class="button remove">
+                <img src="./resources/remove_black_icon.svg" alt="remove">
+                <span>Remove</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="task-create">
+          <textarea class="input-text" placeholder="Task description..." maxlength="500" rows="3"></textarea>
+          <div class="buttons">
+            <button class="button" id="create-task-button">Criar</button>
+            <button class="button" id="cancel-task-button">Cancelar</button>
+          </div>
+        </div>
+
+      </div>
+        
+      <button class="button add-task" id="add-task-button">
+        Add new task
+      </button>
+    
+    </div>
+
+  </div>
+</body>
+</html>

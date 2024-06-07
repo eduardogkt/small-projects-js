@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script defer src="index.js"></script>
+  <title>random number generator</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="panel">
+
+      <h1 class="title">generate a random number</h1>
+      <div class="controllers">
+
+        <section class="controller-section">
+          <div class="input-field">
+            <label for="min-rand">min</label>
+            <input name="min-rand" id="min-rand" type="number" value="1">
+          </div>
+          
+          <div class="input-field">
+            <label for="max-rand">max</label>
+            <input id="max-rand" type="number" value="10">
+          </div>
+        </section>
+        
+        <section class="controller-section">        
+          <div class="input-field">
+            <input id="float-rand" type="checkbox">
+            <label for="float-rand">float</label>
+          </div>
+          
+          <div class="input-field disabled" id="decimals-rand-field">
+            <label for="decimals-rand">decimals</label>
+            <input id="decimals-rand" type="number" min="1" max="15" value="1" disabled>
+          </div>
+        </section>
+      </div>
+      
+      <div class="display" id="display-rand"></div>
+
+      <div class="button-area">
+        <button class="button" id="button-rand">
+          <span class="front">generate</span>
+        </button>
+        <button class="button" id="button-copy">
+          <span class="front">copy</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
