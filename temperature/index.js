@@ -69,6 +69,12 @@ function swapConversion() {
 
     inputSelect.value = output;
     outputSelect.value = input;
+
+    let inputTemp = inputField.value;
+    let outputTemp = outputField.value;
+
+    inputField.value = outputTemp;
+    outputField.value = inputTemp;
 }
 
 convetBtn.addEventListener("click", convertTemperature);

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="index.js"></script>
+  <title>random password generator</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="panel">
+
+      <h1 class="title">generate a random password</h1>
+
+      <section class="controllers">
+        <div class="input-field" id="length-field">
+          <label for="input-length">length</label>
+          <input type="number" id="input-length" class="input" value="1" min="1" max="100">
+        </div>
+
+        <div class="input-field">
+          <input type="checkbox" id="check-lowercase" class="input">
+          <label for="check-lowercase">lowercase</label>
+        </div>
+        <div class="input-field">
+          <input type="checkbox" id="check-uppercase" class="input">
+          <label for="check-uppercase">uppercase</label>
+        </div>
+
+        <div class="input-field">
+          <input type="checkbox" id="check-numbers" class="input">
+          <label for="check-numbers">numbers</label>
+        </div>
+
+        <div class="input-field">
+          <input type="checkbox" id="check-symbols" class="input">
+          <label for="check-symbols">symbols</label>
+        </div>
+
+      </section>
+
+      <div class="display" id="display-rand"></div>
+
+      <section class="button-area">
+
+        <button class="button" id="button-rand">
+          <span class="front">generate</span>
+        </button>
+        
+        <button class="button" id="button-copy">
+          <span class="front">copy</span>
+        </button>
+
+      </section>
+
+      </section>
+    </div>
+  </div>
+</body>
+</html>
