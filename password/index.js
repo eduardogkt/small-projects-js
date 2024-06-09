@@ -1,3 +1,4 @@
+const pwLengthInput = document.querySelector("#input-length");
 const includeLowercase = document.querySelector("#check-lowercase");
 const includeUppercase = document.querySelector("#check-uppercase");
 const includeNumbers = document.querySelector("#check-numbers");
@@ -14,6 +15,8 @@ window.addEventListener("load", function() {
 });
 
 function randRange(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
@@ -31,10 +34,11 @@ function validateInput(passwordLength, allowedCharsLength) {
     return true;
 }
 
-function generatePassword() {
+// generates the random password and displays it
+randButton.addEventListener("click", function() {
     pwDisplay.style.color = "black";
-    const passwordLength = document.querySelector("#input-length").value;
 
+    const pwLength = pwLengthInput.value;
     const lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
     const uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const symbolChars = "!@#$%&*()[]{}-_=+\/|,.;<>:?^~§";
@@ -47,25 +51,27 @@ function generatePassword() {
     allowedChars += (includeNumbers.checked) ? numberChars : "";
     allowedChars += (includeSymbols.checked) ? symbolChars : "";
 
-    if (!validateInput(passwordLength, allowedChars.length)) {
+    if (!validateInput(pwLength, allowedChars.length)) {
         return;
     }
 
-    for (let i = 0; i < passwordLength; i++) {        
+    for (let i = 0; i < pwLength; i++) {        
         password[i] = allowedChars[randRange(0, allowedChars.length)]
     }
 
     pwDisplay.textContent = password.join("");
-}
+});
 
-function displayCopyMessage() {
+
+// displays the copy confirmation message
+copyButton.addEventListener("click", function() {
     let text = pwDisplay.textContent;
     navigator.clipboard.writeText(text);
 
     addCopyMessage();
     setTimeout(fadeCopyMessage, 1000);
     setTimeout(removeCopyMessage, 2000);
-}
+});
 
 function fadeCopyMessage() {
     let copyMessage = document.querySelector(".copy-message");
@@ -86,8 +92,3 @@ function removeCopyMessage() {
     let docWrapper = document.querySelector(".wrapper");
     docWrapper.removeChild(copyMessage);
 }
-
-
-randButton.addEventListener("click", generatePassword);
-
-copyButton.addEventListener("click", displayCopyMessage);

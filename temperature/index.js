@@ -40,7 +40,7 @@ function conversionParams(input, output) {
     return `${input.value}-${output.value}`;
 }
 
-function convertTemperature() {
+convetBtn.addEventListener("click", function() {
     let outputTemp;
     let inputTemp = Number(inputField.value);
     
@@ -61,9 +61,10 @@ function convertTemperature() {
 
     outputTemp = fixedDecimals(outputTemp, 4);
     outputField.value = (isNaN(outputTemp)) ? "" : outputTemp;
-}
+});
 
-function swapConversion() {
+// swap the conversion
+swapBtn.addEventListener("click", function() {
     let input = inputSelect.value;
     let output = outputSelect.value;
 
@@ -75,7 +76,4 @@ function swapConversion() {
 
     inputField.value = outputTemp;
     outputField.value = inputTemp;
-}
-
-convetBtn.addEventListener("click", convertTemperature);
-swapBtn.addEventListener("click", swapConversion);
+});

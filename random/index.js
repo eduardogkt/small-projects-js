@@ -12,20 +12,16 @@ window.addEventListener("load", function() {
     randFloat.checked = false;
 });
 
+// generates a random float number
 function generateRandNumber(min, max, decimalPlaces) {
-    let negativeFactor = 1;
-    
-    if (min < 0) {
-        min = 0;
-        // decides if the random number is negative 50/50 chance
-        negativeFactor = (Math.round(Math.random() * 2) % 2 == 0) ? -1 : 1;
-    }
+    min = Math.ceil(min);
+    max = Math.floor(max);
 
     let randNumber = (Math.random() * (max - min)) + min;
     let precision = Math.pow(10, decimalPlaces);
     randNumber = Math.floor(randNumber * precision) / precision;
     
-    return randNumber * negativeFactor;
+    return randNumber;
 }
 
 function assertRange(min, max) {
@@ -38,6 +34,7 @@ function assertRange(min, max) {
            max;
 }
 
+// enables and diasables the decimals field
 randFloat.addEventListener("click", function() {
     let float = randFloat.checked;
     if (float) {
@@ -50,19 +47,33 @@ randFloat.addEventListener("click", function() {
     }
 });
 
+function validateInput(min, max, decimals) {
+    if (max < min) {
+        randDisplay.style.color = "red";
+        randDisplay.textContent = "invalid range";
+        return false;
+    }
+    if (decimals < 0) {
+        randDisplay.style.color = "red"
+        randDisplay.textContent = "decimals cannot be negative"
+        return false;
+    }
+    return true;
+}
+
+// genearates the random number and displays it
 randButton.addEventListener("click", function() {
     randDisplay.style.color = "black";
-    let min = randMin.value;
-    let max = randMax.value;
+    let min = Number(randMin.value);
+    let max = Number(randMax.value);
+    let decimals = Number(randDecimals.value);
 
-    if (max < min) {
-        randDisplay.textContent = "invalid range";
-        randDisplay.style.color = "red";
+    if (!validateInput(min, max, decimals)) {
         return;
     }
+
     assertRange(min, max);
 
-    let decimals = randDecimals.value;
     let randNumber = generateRandNumber(min, max, decimals);
     
     let integer = !(randFloat.checked);
@@ -73,6 +84,7 @@ randButton.addEventListener("click", function() {
     randDisplay.textContent = randNumber;
 });
 
+// displays the copy confirmation message
 copyButton.addEventListener("click", function() {
     let text = randDisplay.textContent;
     navigator.clipboard.writeText(text);
