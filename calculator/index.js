@@ -131,6 +131,11 @@ function solveExpression() {
     displayCurr.value = result;
     displayLast.value = displayContent;
     cleanDisplay = true;
+
+    let historyTab = document.querySelector("#history-tab");
+    if (historyTab) {
+        updateHistory(historyTab);
+    }
 };
 
 // cleans the display
@@ -152,13 +157,20 @@ displayLast.addEventListener("click", function() {
     }
 });
 
+function copyDisplayContent() {
+    navigator.clipboard.writeText(displayCurr.value);
+}
+
 document.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
         solveExpression();
         cleanDisplay = true;
     }
-    if(event.key === "e" && event.ctrlKey == true) {
+    if (event.key === "e" && event.ctrlKey == true) {
         clearAll();
+    }
+    if (event.key === "c" && event.ctrlKey == true) {
+        copyDisplayContent();
     }
 })
 
@@ -171,18 +183,81 @@ btnOpt.addEventListener("click", function() {
     }
 });
 
+function updateHistory(historyTab) {
+    // removendo a mensagem de "no history"
+    const span = historyTab.querySelector("span");
+    if (span) {
+        span.remove();
+    }
+
+    const clearButton = historyTab.querySelector("#btn-clear-history");
+    if (clearButton) {
+        clearButton.remove();
+    }
+
+    const historyEntrysSection = document.querySelector("#history-expressions");
+    // colocar as expressoes na aba de historico
+    for (expression of history) {
+        const btn = document.createElement("div");
+        btn.classList.add("expression");
+
+        const input = document.createElement("input");
+        input.classList.add("history-entry")
+        input.type = "text";
+        input.readOnly = true;
+        input.value = expression;
+        btn.appendChild(input);
+        
+        historyEntrysSection.prepend(btn);
+    }
+    history = [];
+
+    // criando botão de limpar historico
+    const btnClearHistory = document.createElement("button");
+    btnClearHistory.classList.add("btn");
+    btnClearHistory.id = "btn-clear-history";
+    btnClearHistory.textContent = "Clear history";
+    historyTab.appendChild(btnClearHistory);
+
+    // evento de limpar historico
+    btnClearHistory.addEventListener("click", function() {
+        const expressions = historyTab.querySelectorAll(".expression");
+        expressions.forEach(function(exp) {
+            exp.remove();
+        })
+        btnClearHistory.remove();
+
+        const noHistoryMessage = document.createElement("span");
+        noHistoryMessage.classList.add("text");
+        noHistoryMessage.textContent = "No history";
+        historyTab.appendChild(noHistoryMessage);
+    });
+
+    // copiar a expressão do historico para a calculadora
+    const historyExps = historyTab.querySelectorAll(".expression");
+    historyExps.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            const expString = btn.querySelector("input").value;
+            const parts = expString.split(" = ");
+
+            // transfere a conta para a calculadora
+            displayLast.value = parts[0];
+            displayCurr.value = parts[1];
+        });
+    });
+}
+
 btnOptHistory.addEventListener("click", function() {
     optMenu.classList.remove("show");
 
-    let historyTab = document.querySelector("#history");
+    let historyTab = document.querySelector("#history-tab");
     
     if (!historyTab) {
-        console.log("criar")
+        // criando a aba de historico se não existir
         historyTab = document.createElement("section");
-        // <section class="frame" id="history">
         historyTab.classList.add("frame");
         historyTab.classList.add("show-flex");
-        historyTab.id = "history";
+        historyTab.id = "history-tab";
         historyTab.innerHTML =
         `
         <div class="toolbar">
@@ -191,57 +266,73 @@ btnOptHistory.addEventListener("click", function() {
             <img src="../assets/close_icon.svg" alt="close" class="icon">
           </button>
         </div>
-        <span class="color-white">No history</span>
+        <div id="history-expressions"></div>
         `
-
-        console.log(historyTab)
-        console.log(historyTab.innerHTML)
+        // cria mensagem de "no history"
+        const noHistoryMessage = document.createElement("span");
+        noHistoryMessage.classList.add("text");
+        noHistoryMessage.textContent = "No history";
+        historyTab.appendChild(noHistoryMessage);
 
         wrapper.appendChild(historyTab);
     }
-    else {
-        console.log("nao criar")
-    }
 
     if (history.length !== 0) {
-        console.log("com hist")
-        // removendo a mensagem de "no history"
-        historyTab.querySelector("span").remove();
-        
-        // colocar as expressoes na aba de historico
-        for (expression of history) {
-            const exp = document.createElement("div");
-            exp.classList.add("expression");
-            exp.innerHTML = `<span>${expression}</span>`;
-            
-            historyTab.appendChild(exp);
-        }
-        history = [];
+        updateHistory(historyTab);
     }
 
+    // evento de clicar para fechar o historico
     const btnCloseHistory = historyTab.querySelector("#btn-close-history")
-
     btnCloseHistory.addEventListener("click", function() {
+        console.log("fsd")
         const expressions = historyTab.querySelectorAll(".expression");
         expressions.forEach(function(exp) {
-            history.push(exp.querySelector("span").textContent);
+            history.unshift(exp.querySelector("input").value);
         })
 
         historyTab.remove();
 
         console.log(history)
     });
-
-    const historyExps = historyTab.querySelectorAll(".expression");
-    historyExps.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-            const expString = btn.querySelector("span").textContent;
-            const parts = expString.split(" = ");
-
-            // transfere a conta para a calculadora
-            displayLast.value = parts[0];
-            displayCurr.value = parts[1];
-        });
-    });
 });
 
+
+btnOptShortcut.addEventListener("click", function() {
+    optMenu.classList.remove("show");
+
+    let shortcutTab = document.querySelector("#shortcut-tab");
+
+    if (!shortcutTab) {
+        shortcutTab = document.createElement("section");
+        shortcutTab.classList.add("frame");
+        shortcutTab.classList.add("show-flex");
+        shortcutTab.id = "shortcut-tab";
+        shortcutTab.innerHTML =
+        `
+        <div class="toolbar">
+          <div class="title">Shortcuts</div>
+          <button class="btn btn-toolbar" id="btn-close-shortcut">
+            <img src="../assets/close_icon.svg" alt="close" class="icon">
+          </button>
+        </div>
+
+        <div class="shortcut">
+          <span class="shortcut-name">Clean all</span>
+          <span class="shortcut-keys">ctrl + e</span>
+        </div>
+        <div class="shortcut">
+          <span class="shortcut-name">Copy</span>
+          <span class="shortcut-keys">ctrl + c</span>
+        </div>
+        `
+        // cria mensagem de "no history"
+        wrapper.appendChild(shortcutTab);
+    }
+
+    // evento de clicar para fechar o historico
+    const btnCloseShortcut = shortcutTab.querySelector("#btn-close-shortcut");
+    btnCloseShortcut.addEventListener("click", function() {
+        console.log("fsd")
+        shortcutTab.remove();
+    });
+});
