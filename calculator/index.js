@@ -6,6 +6,7 @@ import {
     replacePercentages, 
     isOperator,
     createNewTab,
+    listenCloseTab,
     operators,
     NO_ID,
 } from './utils.js';
@@ -20,6 +21,7 @@ const btnEqual = document.querySelector("#btn-equal");
 const displayCurr = document.querySelector("#curr-result");
 const displayLast = document.querySelector("#last-result");
 
+const optMenu = document.querySelector("#opt-menu");
 const btnOpt = document.querySelector("#btn-opt");
 const btnOptHistory = document.querySelector("#btn-opt-menu-history");
 const btnOptShortcut = document.querySelector("#btn-opt-menu-shortcut");

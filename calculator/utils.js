@@ -1,9 +1,6 @@
 const operators = ["/", "x", "-", "+"];
 const NO_ID = null;
 
-const optMenu = document.querySelector("#opt-menu");
-
-
 // returns true is char is an operator
 function isOperator(char) {
     return operators.includes(char);
@@ -74,6 +71,7 @@ export {
     replacePercentages, 
     isOperator, 
     createNewTab,
+    listenCloseTab,
     operators,
     NO_ID,
 };
