@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script defer src="index.js"></script>
+  <title>calculator</title>
+</head>
+<body>
+  <div class="wrapper" id="wrapper">
+
+    <section class="frame">
+
+      <section class="toolbar">
+        <div class="title">Calculator</div>
+        <div class="opt-menu-wrapper" id="opt-menu-wrapper">
+          <button class="btn btn-toolbar" id="btn-opt">
+            <i data-lucide="ellipsis-vertical" class="icon"></i>
+          </button>
+
+          <div class="opt-menu" id="opt-menu">
+            <button class="btn btn-opt-menu" id="btn-opt-menu-history">History</button>
+            <button class="btn btn-opt-menu" id="btn-opt-menu-advanced">Advanced</button>
+            <button class="btn btn-opt-menu" id="btn-opt-menu-shortcut">Shortcuts</button>
+          </div>
+        </div>
+      </section>
+      
+      <section class="calc-display">
+        <input type="text" value="" readonly class="last-result" id="last-result">
+        <input type="text" value="0" class="curr-result" id="curr-result">
+      </section>
+      
+      <section class="calc-keys">
+        <div>
+          <div class="btn-tools">
+            <button class="btn btn-key btn-tool" id="btn-clear">AC</button>
+            <button class="btn btn-key btn-tool" id="btn-del">C</button>
+            <button class="btn btn-key btn-tool" id="btn-perc">%</button>
+          </div>
+          <div class="btn-nums">
+            <button class="btn btn-key btn-num" id="btn-7">7</button>
+            <button class="btn btn-key btn-num" id="btn-8">8</button>
+            <button class="btn btn-key btn-num" id="btn-9">9</button>
+            <button class="btn btn-key btn-num" id="btn-4">4</button>
+            <button class="btn btn-key btn-num" id="btn-5">5</button>
+            <button class="btn btn-key btn-num" id="btn-6">6</button>
+            <button class="btn btn-key btn-num" id="btn-1">1</button>
+            <button class="btn btn-key btn-num" id="btn-2">2</button>
+            <button class="btn btn-key btn-num" id="btn-3">3</button>
+            <button class="btn btn-key btn-num" id="btn-0">0</button>
+            <button class="btn btn-key btn-num" id="btn-00">00</button>
+            <button class="btn btn-key btn-num" id="btn-dot">.</button>
+          </div>
+        </div>
+
+        <div class="btn-oprs">
+          <button class="btn btn-key btn-opr" id="btn-div">/</button>
+          <button class="btn btn-key btn-opr" id="btn-mult">x</button>
+          <button class="btn btn-key btn-opr" id="btn-sub">-</button>
+          <button class="btn btn-key btn-opr" id="btn-add">+</button>
+          <button class="btn btn-key " id="btn-equal">=</button>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- <section class="frame" id="history">
+
+      <div class="toolbar">
+        <button class="btn btn-toolbar" id="btn-close-history">
+          <i data-lucide="x" class="icon"></i>
+        </button>
+      </div>
+
+      <div class="expression">
+        <span>12*3</span>
+      </div>
+
+      <div class="expression">
+        <span>12*3</span>
+      </div>
+    </section> -->
+
+  </div>
+  <script src="https://unpkg.com/lucide@latest"></script>
+</body>
+</html>

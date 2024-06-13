@@ -81,7 +81,7 @@ function fadeCopyMessage() {
 function addCopyMessage() {
     let docWrapper = document.querySelector(".wrapper");
 
-    var copyMesssage = document.createElement('div');
+    let copyMesssage = document.createElement('div');
     copyMesssage.classList.add("copy-message");
     copyMesssage.textContent = "copied to the clipboard";
     docWrapper.appendChild(copyMesssage);

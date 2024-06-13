@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Inter", "Ubuntu", sans-serif;
+}
+
+input {
+    font-family: "Inter", "Ubuntu", sans-serif;
+
+    width: 210px;
+    text-align: right;
+    background-color: transparent;
+    color: #ffffff;
+}
+input:focus {
+    outline: none;
+}
+
+.icon {
+    width: 18px;
+    height: 18px;
+    color: #ffffff;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 2rem;
+
+    padding-top: 5rem;
+    min-height: 100vh;
+}
+
+.frame {
+    background-color: #000000;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #ffffff;
+    align-items: center;
+}
+
+.title {
+    font-weight: 500;
+    padding: 0 1rem;
+}
+
+.opt-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.opt-menu {
+    background-color: #262626;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top: 2.7rem;
+    display: none;
+}
+
+.calc-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: end;
+    gap: 0.2rem;
+
+    height: 150px;
+    padding: 1rem;
+    color: #ffffff;
+}
+
+.curr-result {
+    font-size: 3rem;
+    min-height: 60px;
+}
+
+.last-result {
+    font-size: 0.9rem;
+    color: #cccccc;
+    min-height: 25px;
+}
+
+.calc-keys {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+}
+
+.btn-tools {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-nums {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);;
+}
+
+.btn-oprs {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    width: fit-content;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    cursor: pointer;
+    color: #ffffff;
+    transition: background-color 100ms ease-in;
+}
+
+.btn-key {
+    padding: 0.8rem;
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    margin: 4px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.btn-toolbar {
+    background-color: #000000;
+    padding: 0rem;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.btn-toolbar:hover {
+    background-color: #262626;
+}
+
+.btn-opt-menu {
+    width: 100%;
+    background-color: #262626;
+    padding: 1rem;
+    font-weight: 500;
+    text-align: left;
+}
+.btn-opt-menu:hover {
+    background-color: #333333;
+}
+
+.btn-opr,
+#btn-equal,
+#btn-perc {
+    background-color: #32674d;
+}
+.btn-opr:hover,
+#btn-equal:hover,
+#btn-perc:hover {
+    background-color: #295640;
+}
+
+.btn-tool {
+    background-color: #6c7993;
+}
+.btn-tool:hover {
+    background-color: #626d84;
+}
+
+.btn-num {
+    background-color: #333333;
+}
+.btn-num:hover {
+    background-color: #262626;
+}
+
+#history {
+    width: 300px;
+    text-align: center;
+}
+
+.expression {
+    color: #ffffff;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 100ms ease-in;
+    text-align: center;
+}
+
+.expression:hover {
+    background-color: #262626;
+}
+
+.show {
+    display: block;
+}
+.show-flex {
+    display: flex;
+}
+.hide {
+    display: none;
+}
+
+.color-white {
+    color: #ffffff;
+}

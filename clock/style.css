@@ -1,0 +1,157 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Roboto Mono", monospace, sans-serif;
+}
+
+input {
+    font-size: 0.9rem;
+}
+
+label {
+    cursor: pointer;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+.panel {
+    background-color: white;
+    border: 2px solid black;
+    padding: 1.5rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.controllers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.controller-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-field {
+    padding: 0.9rem 0.8rem;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    outline: none;
+    user-select: none;
+}
+
+.input-field input {
+    width: 70px;
+    margin-left: 5px;
+}
+
+.input-field input:focus {
+    outline: none;
+}
+
+#float-rand {
+    margin: 0;
+    width: auto;
+    cursor: pointer;
+}
+
+.display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 70px;
+    font-size: 1.2rem;
+}
+
+.button-area {
+    display: flex;
+    gap: 1rem;
+}
+
+.button,
+.front {
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: "Roboto Mono", monospace, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.button {
+    height: 58px;
+    transition: all 100ms ease;
+    
+    background-color: rgb(71, 140, 230);
+    border: 2px solid rgb(54, 122, 211);
+}
+
+.front {
+    display: block;
+    padding: 1rem 1.5rem;
+    position: relative;
+    bottom: 10px;
+    position: relative;
+    left: -2px;
+    transition: all 100ms ease;
+
+    background-color: rgb(123, 180, 255);
+    border: 2px solid rgb(54, 122, 211);
+    width: calc(100% + 4px);
+}
+
+.button:hover .front {
+    transform: translateY(3px);
+    background-color: rgb(109, 172, 255);
+}
+
+.button:active .front {
+    transform: translateY(8px);
+    background-color: rgb(109, 172, 255);
+}
+
+
+.disabled {
+    border: 2px solid #bdbdbd;
+    color: #bdbdbd;
+}
+
+.disabled * {
+    cursor: default;
+    color: #bdbdbd;
+}
+
+.copy-message {
+    background-color: white;
+    padding: 1rem 1.1rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    opacity: 1;
+    transition: opacity 700ms linear;
+}
