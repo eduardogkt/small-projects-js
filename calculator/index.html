@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script defer src="index.js"></script>
+  <script defer type="module" src="index.js"></script>
   <title>calculator</title>
 </head>
 <body>
   <div class="wrapper" id="wrapper">
 
-    <section class="frame">
+    <section class="frame" id="calc-tab">
 
       <section class="toolbar">
         <div class="title">Calculator</div>
@@ -66,42 +66,7 @@
 
     </section>
 
-    <!-- <section class="frame" id="history">
-
-      <div class="toolbar">
-        <button class="btn btn-toolbar" id="btn-close-history">
-          <i data-lucide="x" class="icon"></i>
-        </button>
-      </div>
-
-      <div class="expression">
-        <span>12*3</span>
-      </div>
-
-      <div class="expression">
-        <span>12*3</span>
-      </div>
-    </section> -->
-
-    <!-- <section class="frame" id="shortcut-tab">
-      <div class="toolbar">
-        <div class="title">Shortcuts</div>
-        <button class="btn btn-toolbar" id="btn-close-history">
-          <img src="../assets/close_icon.svg" alt="close" class="icon">
-        </button>
-      </div>
-
-      <div class="shortcut">
-        <span class="shortcut-name">Clean all</span>
-        <span class="shortcut-keys">ctrl + e</span>
-      </div>
-      <div class="shortcut">
-        <span class="shortcut-name">Copy</span>
-        <span class="shortcut-keys">ctrl + c</span>
-      </div>
-    </section> -->
-
   </div>
-  <script src="https://unpkg.com/lucide@latest"></script>
 </body>
+<script src="https://unpkg.com/lucide@latest"></script>
 </html>

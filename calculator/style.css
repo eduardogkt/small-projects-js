@@ -221,7 +221,7 @@ input:focus {
     text-align: center;
 }
 
-.expression {
+.history-entry {
     color: #ffffff;
     padding: 0.9rem;
     margin-bottom: 0.3rem;
@@ -231,11 +231,11 @@ input:focus {
     text-align: center;
 }
 
-.expression:hover {
+.history-entry:hover {
     background-color: #262626;
 }
 
-.history-entry {
+.history-entry-exp {
     color: #ffffff;
     width: 100%;
     text-align: center;
@@ -261,25 +261,16 @@ input:focus {
 }
 
 .shortcut-name {
-
+    color: #ffffff;
 }
 
 .shortcut-keys {
     color: #9e9e9e;
 }
 
-
 .show {
     display: block;
-}
-.show-flex {
-    display: flex;
 }
 .hide {
     display: none;
 }
-
-.color-white {
-    color: #ffffff;
-}
-

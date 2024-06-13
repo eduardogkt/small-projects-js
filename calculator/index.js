@@ -1,4 +1,17 @@
+import { 
+    endsWithAnyOf, 
+    createNewElement, 
+    addMessage, 
+    copyToClipboard, 
+    replacePercentages, 
+    isOperator,
+    createNewTab,
+    operators,
+    NO_ID,
+} from './utils.js';
+
 lucide.createIcons();
+
 const btnDisplayable = document.querySelectorAll(".btn-num, .btn-opr, #btn-perc");
 const btnClear = document.querySelector("#btn-clear");
 const btnDel = document.querySelector("#btn-del");
@@ -7,70 +20,78 @@ const btnEqual = document.querySelector("#btn-equal");
 const displayCurr = document.querySelector("#curr-result");
 const displayLast = document.querySelector("#last-result");
 
-const optMenu = document.querySelector("#opt-menu");
 const btnOpt = document.querySelector("#btn-opt");
 const btnOptHistory = document.querySelector("#btn-opt-menu-history");
-const btnOptAdvanced = document.querySelector("#btn-opt-menu-advanced");
 const btnOptShortcut = document.querySelector("#btn-opt-menu-shortcut");
-const btnCloseHistory = document.querySelector("#btn-close-history");
 
-const wrapper = document.querySelector("#wrapper");
 
 let cleanDisplay = false;
-const operators = ["/", "x", "-", "+"];
 let history = [];
 
 // hide options menu if click out of it
 document.addEventListener("click", function(event) {
-    if (!optMenu.contains(event.target) && 
-        !btnOpt.contains(event.target)) {
+    if (!optMenu.contains(event.target) && !btnOpt.contains(event.target)) {
         optMenu.classList.remove("show");
     }
-})
+});
 
-// retorna verdadeiro se str termina com algum dos sufixos
-function endsWithAnyOf(str, suffixes) {
-    // suffixes = suffixes.split(", ");
-    return suffixes.some(suffix => str.endsWith(suffix));
-}
-
-function isOperator(char) {
-    return operators.includes(char);
-}
-
-btnDisplayable.forEach(btn => btn.addEventListener("click", function() {
-    if (cleanDisplay) {
-        displayCurr.value = "";
-        cleanDisplay = false;
+// keyboard events
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        solveExpression();
     }
-    let displayContent = displayCurr.value;
-    let charToAppend = btn.textContent;
-
-    // se for algum operador o substitui pelo operador corrente
-    if (endsWithAnyOf(displayContent, operators) && 
-        isOperator(charToAppend)) {
-        displayContent = displayContent.slice(0, -1) + charToAppend;
+    if (event.key === "e" && event.ctrlKey == true) {
+        clearAll();
     }
-    else {
-        displayContent += charToAppend;
+    if (event.key === "c" && event.ctrlKey == true) {
+        copyToClipboard(displayCurr.value);
     }
-    displayCurr.value = displayContent;
-}));
+});
 
-displayCurr.addEventListener("input", function() {
+// receiving input from digital keyboard
+btnDisplayable.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        if (cleanDisplay) {
+            displayCurr.value = "";
+            cleanDisplay = false;
+        }
+        let displayContent = displayCurr.value;
+        let charToAppend = btn.textContent;
+
+        // if last char is an operator, replace it with the new operator 
+        if (endsWithAnyOf(displayContent, operators) && 
+            isOperator(charToAppend)) {
+            displayContent = displayContent.slice(0, -1) + charToAppend;
+        }
+        // just append the new char to the end of the display content
+        else {
+            displayContent += charToAppend;
+        }
+        displayCurr.value = displayContent;
+    })
+});
+
+
+// receiving input from keyboard
+displayCurr.addEventListener("input", function(event) {
+    const isBackspace = (event) => (event.inputType === 'deleteContentBackward');
+
     let displayContent;
-    if (cleanDisplay) {
+    if (cleanDisplay && !isBackspace) {
+        // the display content become only the new input char
         displayContent = displayCurr.value.slice(-1);
+
+        // the result is the display content less the last char (new input char)
         displayLast.value = displayCurr.value.slice(0, -1);
+        
         displayCurr.value = "";
         cleanDisplay = false;
-    }else {
-
+    } else {
         displayContent = displayCurr.value.replaceAll("*", "x");
     }
     let charToAppend = displayContent.slice(-1);
     
-    // se for algum operador o substitui pelo operador corrente
+    // if last char is an operator, replace it with the new operator 
     if (endsWithAnyOf(displayContent.slice(0, -1), operators) && 
         isOperator(charToAppend)) {
         displayContent = displayContent.slice(0, -2) + charToAppend;
@@ -81,28 +102,45 @@ displayCurr.addEventListener("input", function() {
 // calculates the result of the operation
 btnEqual.addEventListener("click", solveExpression);
 
-function replacePercentages(expression) {
-    const regexPercentage = /(\d+(\.\d+)?)%/g;
-    return expression.replace(regexPercentage, (match, p1) => `(${p1}/100)`);
-}
+// solves the expression
+function solveExpression() {
+    let displayContent = displayCurr.value;
+    let expression = formattedExpression(displayContent);
+    
+    let result = evaluete(expression);
 
+    displayCurr.value = result;
+    displayLast.value = displayContent;
+    cleanDisplay = true;
+
+    let historyTab = document.querySelector("#history-tab");
+    if (historyTab && result !== "Error") {
+        updateHistory(historyTab);
+    }
+};
+
+// format the input content to a valid expression
 function formattedExpression(exp) {
     exp = exp.replaceAll("x", "*");
     return replacePercentages(exp);
 }
 
-function evaluete(expression) {
+// evaluates the expression
+function evaluete(exp) {
+    if (exp === "") {
+        return "";
+    }
+
     try {
-    
-        // verificando se ha caracteres invalidos
-        if (/[^-()\d/*+.%\s]/.test(expression)) {
+        // checking for invalid arrangements
+        if (/[^-()\d/*+.%\s]/.test(exp)) {
             throw new Error("Invalid characters in expression");
         }
 
-        const result = eval(expression);
+        const result = eval(exp);
 
         if (result !== undefined) {
-            registerOnHistory(expression, result);
+            registerOnHistory(exp, result);
         }
         else {
             result = "";
@@ -115,65 +153,37 @@ function evaluete(expression) {
     }
 }
 
-function registerOnHistory(expression, result) {
-    let formatedExp = expression.replaceAll("*", "x");
+// store the expression and its result in the history
+function registerOnHistory(exp, result) {
+    let formatedExp = exp.replaceAll("*", "x");
     history.push(`${formatedExp} = ${result}`);
-    console.log(history)
 }
 
-function solveExpression() {
-    let displayContent = displayCurr.value;
-    let expression = formattedExpression(displayContent);
-    
-    let result = evaluete(expression);
-
-
-    displayCurr.value = result;
-    displayLast.value = displayContent;
-    cleanDisplay = true;
-
-    let historyTab = document.querySelector("#history-tab");
-    if (historyTab) {
-        updateHistory(historyTab);
-    }
-};
-
-// cleans the display
+// clear the display
 btnClear.addEventListener("click", clearAll);
 
+// clear the display
 function clearAll() {
     displayCurr.value = "";
     displayLast.value = "";
 }
 
+// deletes the last char of the display
 btnDel.addEventListener("click", function() {
     displayCurr.value = displayCurr.value.slice(0, -1);
-})
+});
 
+// replaces the content of the current display with the last operation
 displayLast.addEventListener("click", function() {
     if (displayLast.value) {
-        displayCurr.value = displayLast.value.replaceAll(" x ", "x").replaceAll("*", "x");
+        displayCurr.value = displayLast.value
+                            .replaceAll("*", "x")
+                            .replaceAll(" x ", "x");
         displayLast.value = "";
     }
 });
 
-function copyDisplayContent() {
-    navigator.clipboard.writeText(displayCurr.value);
-}
-
-document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        solveExpression();
-        cleanDisplay = true;
-    }
-    if (event.key === "e" && event.ctrlKey == true) {
-        clearAll();
-    }
-    if (event.key === "c" && event.ctrlKey == true) {
-        copyDisplayContent();
-    }
-})
-
+// options menu activation
 btnOpt.addEventListener("click", function() {
     const optMenu = document.querySelector("#opt-menu");
     if (optMenu.classList.contains("show")) {
@@ -183,135 +193,101 @@ btnOpt.addEventListener("click", function() {
     }
 });
 
+// put the history entry in the history tab and wait for close/copy
 function updateHistory(historyTab) {
-    // removendo a mensagem de "no history"
-    const span = historyTab.querySelector("span");
-    if (span) {
-        span.remove();
-    }
+    // removing "no history" message
+    historyTab.querySelector("span")?.remove();
 
-    const clearButton = historyTab.querySelector("#btn-clear-history");
-    if (clearButton) {
-        clearButton.remove();
-    }
+    // removing the "clear history" button
+    historyTab.querySelector("#btn-clear-history")?.remove();
 
     const historyEntrysSection = document.querySelector("#history-expressions");
-    // colocar as expressoes na aba de historico
-    for (expression of history) {
-        const btn = document.createElement("div");
-        btn.classList.add("expression");
+    
+    // appending the expressions to the history tab
+    for (let expression of history) {
+        const entry = createNewElement("div", NO_ID, "", "history-entry");
 
-        const input = document.createElement("input");
-        input.classList.add("history-entry")
-        input.type = "text";
-        input.readOnly = true;
-        input.value = expression;
-        btn.appendChild(input);
+        const entryExp = createNewElement("input", NO_ID, "", "history-entry-exp");
+        entryExp.type = "text";
+        entryExp.value = expression;
+        entryExp.readOnly = true;
+
+        entry.appendChild(entryExp);
         
-        historyEntrysSection.prepend(btn);
+        historyEntrysSection.prepend(entry);
     }
+    // remove all the elements from the history
     history = [];
 
-    // criando botão de limpar historico
-    const btnClearHistory = document.createElement("button");
-    btnClearHistory.classList.add("btn");
-    btnClearHistory.id = "btn-clear-history";
-    btnClearHistory.textContent = "Clear history";
+    // add clear history button
+    const btnClearHistory = 
+        createNewElement("button", "btn-clear-history", "Clear History", "btn");
     historyTab.appendChild(btnClearHistory);
 
-    // evento de limpar historico
+    // event listner clear history
     btnClearHistory.addEventListener("click", function() {
-        const expressions = historyTab.querySelectorAll(".expression");
-        expressions.forEach(function(exp) {
-            exp.remove();
-        })
+        // removing all the history entrys
+        const entrys = historyTab.querySelectorAll(".history-entry");
+        entrys.forEach(entry => entry.remove());
         btnClearHistory.remove();
 
-        const noHistoryMessage = document.createElement("span");
-        noHistoryMessage.classList.add("text");
-        noHistoryMessage.textContent = "No history";
-        historyTab.appendChild(noHistoryMessage);
+        addMessage(historyTab, "No history", "no-history-msg");
     });
 
-    // copiar a expressão do historico para a calculadora
-    const historyExps = historyTab.querySelectorAll(".expression");
-    historyExps.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-            const expString = btn.querySelector("input").value;
-            const parts = expString.split(" = ");
+    // event listner copy the expression from the history to calculator
+    const entrys = historyTab.querySelectorAll(".history-entry");
+    entrys.forEach(function(entry) {
+        entry.addEventListener("click", function() {
+            const entryExpValue = entry.querySelector("input").value;
+            const [exp, result] = entryExpValue.split(" = ");
 
-            // transfere a conta para a calculadora
-            displayLast.value = parts[0];
-            displayCurr.value = parts[1];
+            displayLast.value = exp;
+            displayCurr.value = result;
         });
     });
 }
 
+// open history tab
 btnOptHistory.addEventListener("click", function() {
-    optMenu.classList.remove("show");
-
-    let historyTab = document.querySelector("#history-tab");
-    
-    if (!historyTab) {
-        // criando a aba de historico se não existir
-        historyTab = document.createElement("section");
-        historyTab.classList.add("frame");
-        historyTab.classList.add("show-flex");
-        historyTab.id = "history-tab";
-        historyTab.innerHTML =
+    let historyTab = 
+    openTab(
+        "history-tab",
         `
         <div class="toolbar">
           <div class="title">History</div>
-          <button class="btn btn-toolbar" id="btn-close-history">
+          <button class="btn btn-toolbar btn-close">
             <img src="../assets/close_icon.svg" alt="close" class="icon">
           </button>
         </div>
-        <div id="history-expressions"></div>
-        `
-        // cria mensagem de "no history"
-        const noHistoryMessage = document.createElement("span");
-        noHistoryMessage.classList.add("text");
-        noHistoryMessage.textContent = "No history";
-        historyTab.appendChild(noHistoryMessage);
+        <div id="history-expressions"></div>`,
+        saveHistory  // saves history when closing
+    );
 
-        wrapper.appendChild(historyTab);
-    }
+    addMessage(historyTab, "No history", "no-history-msg");
 
-    if (history.length !== 0) {
+    // if theres's entrys in the history array
+    if (history.length > 0) {
         updateHistory(historyTab);
     }
-
-    // evento de clicar para fechar o historico
-    const btnCloseHistory = historyTab.querySelector("#btn-close-history")
-    btnCloseHistory.addEventListener("click", function() {
-        console.log("fsd")
-        const expressions = historyTab.querySelectorAll(".expression");
-        expressions.forEach(function(exp) {
-            history.unshift(exp.querySelector("input").value);
-        })
-
-        historyTab.remove();
-
-        console.log(history)
-    });
 });
 
+function saveHistory(historyTab) {
+    const entrys = historyTab.querySelectorAll(".history-entry");
+    history = [];    
+    entrys.forEach(function(entry) {
+        const entryExpValue = entry.querySelector("input").value;
+        history.push(entryExpValue);
+    });
+}
 
+// open shortcut tab
 btnOptShortcut.addEventListener("click", function() {
-    optMenu.classList.remove("show");
-
-    let shortcutTab = document.querySelector("#shortcut-tab");
-
-    if (!shortcutTab) {
-        shortcutTab = document.createElement("section");
-        shortcutTab.classList.add("frame");
-        shortcutTab.classList.add("show-flex");
-        shortcutTab.id = "shortcut-tab";
-        shortcutTab.innerHTML =
+    openTab(
+        "shortcut-tab", 
         `
         <div class="toolbar">
           <div class="title">Shortcuts</div>
-          <button class="btn btn-toolbar" id="btn-close-shortcut">
+          <button class="btn btn-toolbar btn-close">
             <img src="../assets/close_icon.svg" alt="close" class="icon">
           </button>
         </div>
@@ -323,16 +299,20 @@ btnOptShortcut.addEventListener("click", function() {
         <div class="shortcut">
           <span class="shortcut-name">Copy</span>
           <span class="shortcut-keys">ctrl + c</span>
-        </div>
-        `
-        // cria mensagem de "no history"
-        wrapper.appendChild(shortcutTab);
+        </div>`
+    );
+});
+
+function openTab(tabId, innerHTML, closingRoutine) {
+    optMenu.classList.remove("show");
+
+    let tab = document.querySelector(`#${tabId}`);
+
+    // creating tab if it doesn't exist
+    if (!tab) {
+        tab = createNewTab(tabId, innerHTML); 
     }
 
-    // evento de clicar para fechar o historico
-    const btnCloseShortcut = shortcutTab.querySelector("#btn-close-shortcut");
-    btnCloseShortcut.addEventListener("click", function() {
-        console.log("fsd")
-        shortcutTab.remove();
-    });
-});
+    listenCloseTab(tab, closingRoutine);
+    return tab;
+}
