@@ -1,3 +1,5 @@
+lucide.createIcons();
+
 const pwLengthInput = document.querySelector("#input-length");
 const includeLowercase = document.querySelector("#check-lowercase");
 const includeUppercase = document.querySelector("#check-uppercase");

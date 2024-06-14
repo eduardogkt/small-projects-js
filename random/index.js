@@ -1,3 +1,5 @@
+lucide.createIcons();
+
 const randButton = document.querySelector("#button-rand");
 const randDisplay = document.querySelector("#display-rand");
 const randMin = document.querySelector("#min-rand");
