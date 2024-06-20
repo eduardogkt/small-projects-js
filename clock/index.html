@@ -9,14 +9,41 @@
 </head>
 <body>
   <div class="wrapper">
-      <div class="frame">
-        <div class="clock">
-          12:34
+
+    <div class="adjust-wrapper">
+      <button class="btn-adjust" id="btn-adjust">
+        <i data-lucide="ellipsis-vertical" class="icon"></i>
+      </button>
+
+      <div class="adjust-menu" id="adjust-menu">
+        <div class="adjust">
+          <label for="time-format" class="label">time format</label>
+          <select class="select" id="time-format">
+            <option value="opt-24h" selected>24h</option>
+            <option value="opt-12h">12h</option>
+          </select>
         </div>
-        <div class="date">
-          june 10 2023
+
+        <div class="adjust">
+          <label for="date-format" class="label">date format</label>
+          <select class="select" id="date-format">
+            <option value="opt-dmy" selected>d/m/y</option>
+            <option value="opt-mdy">m/d/y</option>
+          </select>
         </div>
       </div>
+    </div>
+
+    <div class="clock-frame" id="clock-frame">
+      <div class="clock" id="clock">
+        00:00:00
+      </div>
+      <div class="date" id="date">
+        date
+      </div>
+    </div>
+  
   </div>
 </body>
+<script src="https://unpkg.com/lucide@latest"></script>
 </html>
