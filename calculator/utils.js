@@ -1,9 +1,14 @@
 const operators = ["/", "x", "-", "+"];
+const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 const NO_ID = null;
 
 // returns true is char is an operator
 function isOperator(char) {
     return operators.includes(char);
+}
+
+function isNumber(char) {
+    return numbers.includes(char);
 }
 
 // returns true if str ends with one of the suffixes
@@ -43,7 +48,7 @@ function replacePercentages(exp) {
 // creates a new tab
 function createNewTab(id, innerHTML) {
     const wrapper = document.querySelector("#wrapper");
-    const newTab = createNewElement("section", id, "", "frame");
+    const newTab = createNewElement("section", id, "", "frame, tab");
 
     newTab.innerHTML = innerHTML;
     wrapper.appendChild(newTab);
@@ -70,6 +75,7 @@ export {
     copyToClipboard , 
     replacePercentages, 
     isOperator, 
+    isNumber,
     createNewTab,
     listenCloseTab,
     operators,

@@ -5,6 +5,7 @@ import {
     copyToClipboard, 
     replacePercentages, 
     isOperator,
+    isNumber,
     createNewTab,
     listenCloseTab,
     operators,
@@ -26,7 +27,6 @@ const btnOpt = document.querySelector("#btn-opt");
 const btnOptHistory = document.querySelector("#btn-opt-menu-history");
 const btnOptShortcut = document.querySelector("#btn-opt-menu-shortcut");
 
-
 let cleanDisplay = false;
 let history = [];
 
@@ -39,14 +39,23 @@ document.addEventListener("click", function(event) {
 
 // keyboard events
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
+    const keyPressed = event.key;
+    const ctrlKeyPressed = event.ctrlKey === true;
+
+    if (keyPressed === "Enter") {
         solveExpression();
     }
-    if (event.key === "e" && event.ctrlKey == true) {
+    if (keyPressed === "e" && ctrlKeyPressed) {
         clearAll();
     }
-    if (event.key === "c" && event.ctrlKey == true) {
+    if (keyPressed === "c" && ctrlKeyPressed) {
         copyToClipboard(displayCurr.value);
+    }
+    if (keyPressed === ";" && ctrlKeyPressed) {
+        openHistoryTab();
+    }
+    if (keyPressed === "/" && ctrlKeyPressed) {
+        openShortcutTab();
     }
 });
 
@@ -57,6 +66,7 @@ btnDisplayable.forEach(function(btn) {
             displayCurr.value = "";
             cleanDisplay = false;
         }
+
         let displayContent = displayCurr.value;
         let charToAppend = btn.textContent;
 
@@ -69,6 +79,13 @@ btnDisplayable.forEach(function(btn) {
         else {
             displayContent += charToAppend;
         }
+        // if input is in the form "0number"
+        if (displayContent.length === 2 &&
+            displayContent.slice(0, -1).endsWith("0") && 
+            isNumber(charToAppend)) {
+            // remove o 0 e coloca so o numero
+            displayContent = displayContent.slice(0, -2) + charToAppend;
+        }
         displayCurr.value = displayContent;
     })
 });
@@ -76,10 +93,10 @@ btnDisplayable.forEach(function(btn) {
 
 // receiving input from keyboard
 displayCurr.addEventListener("input", function(event) {
-    const isBackspace = (event) => (event.inputType === 'deleteContentBackward');
-
     let displayContent;
-    if (cleanDisplay && !isBackspace) {
+    
+    // clean display and its not backspace
+    if (cleanDisplay && !(event.inputType === "deleteContentBackward")) {
         // the display content become only the new input char
         displayContent = displayCurr.value.slice(-1);
 
@@ -91,11 +108,19 @@ displayCurr.addEventListener("input", function(event) {
     } else {
         displayContent = displayCurr.value.replaceAll("*", "x");
     }
+
     let charToAppend = displayContent.slice(-1);
     
     // if last char is an operator, replace it with the new operator 
     if (endsWithAnyOf(displayContent.slice(0, -1), operators) && 
         isOperator(charToAppend)) {
+        displayContent = displayContent.slice(0, -2) + charToAppend;
+    }
+    // if input is in the form "0number"
+    if (displayContent.length === 2 && 
+        displayContent.slice(0, -1).endsWith("0") && 
+        isNumber(charToAppend)) {
+        // removes the 0 and append only the number
         displayContent = displayContent.slice(0, -2) + charToAppend;
     }
     displayCurr.value = displayContent;
@@ -250,7 +275,9 @@ function updateHistory(historyTab) {
 }
 
 // open history tab
-btnOptHistory.addEventListener("click", function() {
+btnOptHistory.addEventListener("click", openHistoryTab);
+
+function openHistoryTab() {
     let historyTab = 
     openTab(
         "history-tab",
@@ -271,7 +298,7 @@ btnOptHistory.addEventListener("click", function() {
     if (history.length > 0) {
         updateHistory(historyTab);
     }
-});
+}
 
 function saveHistory(historyTab) {
     const entrys = historyTab.querySelectorAll(".history-entry");
@@ -283,7 +310,9 @@ function saveHistory(historyTab) {
 }
 
 // open shortcut tab
-btnOptShortcut.addEventListener("click", function() {
+btnOptShortcut.addEventListener("click", openShortcutTab); 
+
+function openShortcutTab() {
     openTab(
         "shortcut-tab", 
         `
@@ -296,25 +325,56 @@ btnOptShortcut.addEventListener("click", function() {
 
         <div class="shortcut">
           <span class="shortcut-name">Clean all</span>
-          <span class="shortcut-keys">ctrl + e</span>
+          <div>
+            <span class="shortcut-keys">ctrl</span>
+            <span class="shortcut-keys">e</span>
+          </div>
         </div>
         <div class="shortcut">
-          <span class="shortcut-name">Copy</span>
-          <span class="shortcut-keys">ctrl + c</span>
+        <span class="shortcut-name">Copy</span>
+          <div>
+            <span class="shortcut-keys">ctrl</span>
+            <span class="shortcut-keys">c</span>
+          </div>
+        </div>
+        <div class="shortcut">
+          <span class="shortcut-name">Open shortcuts</span>
+          <div>
+            <span class="shortcut-keys">ctrl</span>
+            <span class="shortcut-keys">/</span>
+          </div>
+        </div>
+        <div class="shortcut">
+          <span class="shortcut-name">Open history</span>
+          <div>
+            <span class="shortcut-keys">ctrl</span>
+            <span class="shortcut-keys">;</span>
+          </div>
         </div>`
     );
-});
+}
 
 function openTab(tabId, innerHTML, closingRoutine) {
     optMenu.classList.remove("show");
 
+    // close all open tabs exept the current tab
+    closeOtherTabs(tabId);
+
     let tab = document.querySelector(`#${tabId}`);
 
     // creating tab if it doesn't exist
-    if (!tab) {
-        tab = createNewTab(tabId, innerHTML); 
-    }
+    tab = tab || createNewTab(tabId, innerHTML);
 
     listenCloseTab(tab, closingRoutine);
     return tab;
+}
+
+function closeOtherTabs(tabId) {
+    let otherTabs = document.querySelectorAll(`.tab:not(#${tabId})`);
+    otherTabs?.forEach(function(tab) {
+        if (tab.id === "history-tab") {
+            saveHistory(tab);
+        }
+        tab.remove();
+    });
 }
