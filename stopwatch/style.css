@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Roboto Mono", monospace, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    
+    min-height: 100vh;
+    backdrop-filter: blur(5px);
+}
+
+.stopwatch-frame {
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 1.5rem 1.7rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+.stopwatch {
+    padding: 1rem;
+    font-size: 3.5rem;
+    user-select: none;
+}
+
+.button-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+.button,
+.front {
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: "Roboto Mono", monospace, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 100%;
+}
+.button {
+    height: 58px;
+    transition: all 100ms ease;
+    
+    width: 110px;
+}
+.front {
+    display: block;
+    padding: 1rem 1.5rem;
+    position: relative;
+    bottom: 10px;
+    position: relative;
+    left: -2px;
+    transition: all 100ms ease;
+
+    width: calc(100% + 4px);
+}
+.button:hover .front {
+    transform: translateY(3px);
+}
+.button:active .front {
+    transform: translateY(8px);
+}
+
+.blue {
+    background-color: hsl(214, 76%, 59%);
+    border: 2px solid hsl(214, 64%, 52%);
+}
+.blue .front {
+    background-color: hsl(214, 100%, 70%);
+    border: 2px solid hsl(214, 64%, 52%);
+}
+.blue:hover .front {
+    background-color: hsl(214, 90%, 67%);
+}
+.blue:active .front {
+    background-color: hsl(214, 90%, 67%);
+}
+
+.green {
+    background-color: hsl(140, 76%, 59%);
+    border: 2px solid hsl(140, 64%, 52%);
+}
+.green .front {
+    background-color: hsl(140, 100%, 70%);
+    border: 2px solid hsl(140, 64%, 52%);
+}
+.green:hover .front {
+    background-color: hsl(140, 90%, 67%);
+}
+.green:active .front {
+    background-color: hsl(140, 90%, 67%);
+}
+
+.red {
+    background-color: hsl(0, 76%, 59%);
+    border: 2px solid hsl(0, 64%, 52%);
+}
+.red .front {
+    background-color: hsl(0, 100%, 70%);
+    border: 2px solid hsl(0, 64%, 52%);
+}
+.red:hover .front {
+    background-color: hsl(0, 90%, 67%);
+}
+.red:active .front {
+    background-color: hsl(0, 90%, 67%);
+}
