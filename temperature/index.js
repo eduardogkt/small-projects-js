@@ -7,29 +7,14 @@ const outputSelect = document.querySelector("#output-select");
 const convetBtn = document.querySelector("#convert-button");
 const swapBtn = document.querySelector("#swap-button");
 
-function CtoF(C) {
-    return C * 1.8 + 32;
-}
+const CtoF = C => C * 1.8 + 32;
+const CtoK = C => C + 273.15;
 
-function CtoK(C) {
-    return C + 273.15;
-}
+const FtoC = F => (F - 32) / 1.8;
+const FtoK = F => (F - 32) / 1.8 + 273.15;
 
-function FtoC(F) {
-    return (F - 32) / 1.8;
-}
-
-function FtoK(F) {
-    return (F - 32) / 1.8 + 273.15;
-}
-
-function KtoC(K) {
-    return K - 273.15;
-}
-
-function KtoF(K) {
-    return (K - 273.15) * 1.8 + 32;
-}
+const KtoC = K => K - 273.15;
+const KtoF = K => (K - 273.15) * 1.8 + 32;
 
 function fixedDecimals(num, decimalsPlaces) {
     let precision = Math.pow(10, decimalsPlaces);
