@@ -39,11 +39,13 @@ body {
     padding: 2rem;
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.5s ease;
 }
 
 .button:hover {
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(228, 237, 255);
 }
 
 .display {
@@ -69,7 +71,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     height: 50px;
     width: 250px;
     color: black;
