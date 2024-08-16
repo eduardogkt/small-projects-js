@@ -38,14 +38,15 @@ body {
     background-color: white;
     padding: 2rem;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
     transition: background-color 0.5s ease;
+    border: 1px solid black;
 }
 
 .button:hover {
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    background-color: rgb(228, 237, 255);
+    background-color: wh;
 }
 
 .display {
@@ -63,8 +64,9 @@ body {
     font-size: 3.5rem;
     height: 150px;
     width: 200px;
-    background-color: whitesmoke;
+    background-color: white;
     border-radius: 10px;
+    border: 1px solid black;
 }
 
 #result {

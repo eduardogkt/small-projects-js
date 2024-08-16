@@ -1,3 +1,5 @@
+lucide.createIcons();
+
 const optionsBtn = document.querySelectorAll(".options-button");
 
 optionsBtn.forEach(function(button) {

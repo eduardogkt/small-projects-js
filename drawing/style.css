@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Roboto Mono", monospace, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    min-height: 100vh;
+}
+
+.title {
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+.pallet, .tools {
+    display: flex;
+    border: 1px solid black;
+    padding: 1rem;
+    border-radius: 10px;
+    gap: 0.3rem;
+}
+
+.tools {
+    flex-direction: column;
+    border: 1px solid black;
+    height: fit-content;
+}
+
+.frame {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.canvas {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    stroke-width: 1px;
+}
+
+.eraser {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stroke .icon {
+    fill: black;
+    width: 4px;
+}
+
+#whitesmoke    { background-color: whitesmoke }
+#gray          { background-color: gray }
+#black         { background-color: black }
+#red           { background-color: red }
+#tomato        { background-color: tomato }
+#orange        { background-color: orange }
+#burlywood     { background-color: burlywood }
+#gold          { background-color: gold }
+#yellow        { background-color: yellow }
+#yellowgreen   { background-color: yellowgreen}
+#green         { background-color: green }
+#darkcyan      { background-color: darkcyan }
+#darkturquoise { background-color: darkturquoise }
+#lightskyblue  { background-color: lightskyblue }
+#dodgerblue    { background-color: dodgerblue }
+#blue          { background-color: blue }
+#blueviolet    { background-color: blueviolet }
+#mediumpurple  { background-color: mediumpurple }
+#plum          { background-color: plum }
+#pink          { background-color: pink }
