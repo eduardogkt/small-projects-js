@@ -37,10 +37,10 @@ a, a:visited, a:hover {
     flex-direction: column;
     gap: 2rem;
     
-    background-image: url("./assets/bg1.svg");
+    background-image: url("./assets/images/bg1.svg");
     background-position-y: 110px;
 
-    background-image: url("./assets/bg2.svg");
+    background-image: url("./assets/images/bg2.svg");
     background-position-y: 73px;
 
     background-repeat: no-repeat;

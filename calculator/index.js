@@ -285,7 +285,7 @@ function openHistoryTab() {
         <div class="toolbar">
           <div class="title">History</div>
           <button class="btn btn-toolbar btn-close">
-            <img src="../assets/close_icon.svg" alt="close" class="icon">
+            <img src="../assets/icons/close_icon.svg" alt="close" class="icon">
           </button>
         </div>
         <div id="history-expressions"></div>`,
@@ -319,7 +319,7 @@ function openShortcutTab() {
         <div class="toolbar">
           <div class="title">Shortcuts</div>
           <button class="btn btn-toolbar btn-close">
-            <img src="../assets/close_icon.svg" alt="close" class="icon">
+            <img src="../assets/icons/close_icon.svg" alt="close" class="icon">
           </button>
         </div>
 
