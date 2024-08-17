@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+    --text-color-dec: hsl(250, 50%, 15%);
+    --border-color-dec: hsl(250, 60%, 35%);
+    --main-color-dec: hsl(250, 75%, 70%);
+    --main-color-hover-dec: hsl(250, 75%, 67%);
+    --second-color-dec: hsl(250, 50%, 50%);
+    --shadow-color-dec: hsla(250, 75%, 67%, 20%);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+body {
+    font-family: "Roboto Mono", monospace, sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+    min-height: 100vh;
+    padding: 10% 0;
+}
+
+.title {
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+span {
+    font-size: 1rem;
+}
+
+section {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.text-input {
+    padding: 1rem 1.1rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 400px;
+    height: 58px;
+    font-family: "Roboto Mono", monospace, sans-serif;
+}
+
+.text-input:focus {
+    outline: none;
+}
+
+.button-area {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn,
+.front {
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: "Roboto Mono", monospace, sans-serif;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.btn {
+    height: 58px;
+    transition: all 100ms ease;
+    
+    background-color: hsl(255, 76%, 49%);
+    border: 2px solid hsl(255, 64%, 42%);
+}
+
+.front {
+    display: block;
+    padding: 1rem 1.5rem;
+    bottom: 10px;
+    position: relative;
+    left: -2px;
+    transition: all 100ms ease;
+
+    background-color: hsl(255, 90%, 64%);
+    border: 2px solid hsl(255, 64%, 42%);
+    width: calc(100% + 4px);
+}
+
+.btn:hover .front {
+    transform: translateY(3px);
+    background-color: hsl(255, 100%, 61%);
+}
+
+.btn:active .front {
+    transform: translateY(8px);
+    background-color: hsl(255, 100%, 61%);
+}
+
+img {
+    display: block;
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    visibility: hidden;
+    padding: 1rem;
+}
