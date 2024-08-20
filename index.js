@@ -1,3 +1,5 @@
+lucide.createIcons();
+
 const aboutBtn = document.getElementById("about-me-button");
 const aboutCard = document.getElementById("about-me-card");
 

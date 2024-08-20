@@ -12,11 +12,11 @@ const strokeIcon = stroke.firstElementChild;
 let mouseDown = false;
 let strokeSize = 0;
 let selectedColor = "black";
-let canvaColor = "white";
+let canvasColor = "white";
 
 // inicializa canvas
 document.addEventListener("DOMContentLoaded", () => {
-    context.fillStyle = canvaColor;
+    context.fillStyle = canvasColor;
     context.fillRect(0, 0, canvas.width, canvas.height);
 });
 
@@ -28,7 +28,7 @@ stroke.addEventListener("click", () => {
 
 // borracha
 eraser.addEventListener("click", () => {
-    selectedColor = canvaColor;
+    selectedColor = canvasColor;
 });
 
 // trocar cores

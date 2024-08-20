@@ -84,6 +84,8 @@ a, a:visited, a:hover {
     min-width: 100px;
     font-size: var(--size-text);
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 .link:hover {
     text-decoration: underline;
@@ -242,4 +244,10 @@ a, a:visited, a:hover {
 
 .about {
     padding-top: 1rem;
+}
+
+.icon {
+    color: black;
+    width: 13px;
+    margin-left: 2px;
 }
