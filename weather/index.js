@@ -2,7 +2,6 @@ const weatherForm = document.querySelector("#weather-form");
 const cityInput = document.querySelector("#input-city");
 
 const card = document.querySelector(".card");
-const apiKey = "bd90e36423404676711c3e3f3ec3887b";
 
 weatherForm.addEventListener("submit", async event => {
     event.preventDefault();
@@ -25,6 +24,7 @@ weatherForm.addEventListener("submit", async event => {
 });
 
 async function getWeatherData(city) {
+    const apiKey = await getApiKey();
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
     const response = await fetch(apiUrl);
 
@@ -89,4 +89,18 @@ function createCardElement(type, id, textContent) {
     cardElement.classList.add(id);
     cardElement.textContent = textContent;
     card.appendChild(cardElement);
+}
+
+async function getApiKey() {
+    try {
+        const data = await fetch("apikey");
+        if (!data.ok) {
+            throw new Error("Cound not fetch apikey");
+        }
+        return await data.text();
+    }
+    catch (error) {
+        console.error(error);
+        displayError(error);
+    }
 }
