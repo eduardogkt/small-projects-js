@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/css/style.css">
-    <link rel="icon" href="resources/tasklist_white_icon.svg">
-    <title>task list</title>
-    <script defer src="index.js"></script>
+  <meta charset="UTF-8" lang="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+  <link rel="icon" href="resources/tasklist_white_icon.svg">
+  <title>task list</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script defer src="index.js"></script>
 </head>
 <body>
   <div class="wrapper">
 
-    <div class="tasklist">
+    <div class="tasklist" id="tasklist">
 
       <div class="tasklist-header">
         <div class="tasklist-name">
           <img class="tasklist-icon" src="./resources/tasklist_black_icon.svg" alt="tasklist icon">
+          <!-- <i data-lucide="list-checks" class="tasklist-icon"></i> -->
           <h1 class="tasklist-title">Task list</h1>
         </div>
         
         <div class="options-wrapper">
           <div class="options-button">
-            <img src="./resources/opt_icon.svg" alt="options icon">
+            <i data-lucide="ellipsis" class="icon-opt"></i>
           </div>
           <div class="options-menu">
             <button class="button remove" id="tasklist-opt-rem-all">
-              <img src="./resources/remove_black_icon.svg" alt="remove all">
+              <i data-lucide="circle-minus" class="icon-opt"></i>
               <span>Remove all tasks</span>
             </button>
             <button class="button remove" id="tasklist-opt-rem-completed">
-              <img src="./resources/remove_black_icon.svg" alt="remove all">
+              <i data-lucide="circle-minus" class="icon-opt"></i>
               <span>Remove completed tasks</span>
             </button>
             <button class="button hide" id="tasklist-opt-hide-completed">
-              <img src="./resources/hide_black_icon.svg" alt="remove all">
+              <i data-lucide="eye-off" class="icon-opt"></i>
               <span>Hide completed tasks</span>
             </button>
           </div>
         </div>
+
       </div>
 
-      <div class="list">
+      <div class="list" id="list">
 
-        <div class="task">
-          <!-- <input type="checkbox" class="input-checkbox"> -->
-          <i data-lucide="circle" class="icon"></i>
+        <!-- <div class="task">
+          <i data-lucide="circle" class="icon-check"></i>
           <input type="checkbox" class="check">
           
           <span class="task-description">
@@ -56,28 +58,28 @@
           
           <div class="options-wrapper">
             <div class="options-button">
-              <img src="./resources/opt_icon.svg" alt="options icon">
+              <i data-lucide="ellipsis" class="icon-opt"></i>
             </div>
             <div class="options-menu">
-              <button class="button edit">
-                <img src="./resources/edit_black_icon.svg" alt="edit">
+              <button class="button edit edit-task">
+                <i data-lucide="pencil" class="icon-opt"></i>
                 <span>Edit</span>
               </button>
-              <button class="button remove">
-                <img src="./resources/remove_black_icon.svg" alt="remove">
+              <button class="button remove remove-task">
+                <i data-lucide="circle-minus" class="icon-opt"></i>
                 <span>Remove</span>
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
         
-        <div class="task-create">
-          <textarea class="input-text" placeholder="Task description..." maxlength="500" rows="3"></textarea>
+        <!-- <div class="task-create">
+          <textarea id="task-description" class="input-text" placeholder="Task description..." maxlength="500" rows="3"></textarea>
           <div class="buttons">
             <button class="button" id="create-task-button">Criar</button>
             <button class="button" id="cancel-task-button">Cancelar</button>
           </div>
-        </div>
+        </div> -->
 
       </div>
         
