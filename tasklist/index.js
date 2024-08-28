@@ -121,13 +121,15 @@ function addTask() {
         updateSelectors();
         updateEventListeners();
         addTask();  // continua adicionando tarefas
+        saveData();
     });
     
     cancelTaskBtn.addEventListener("click", function() {
         creatingTask = false;
-
+        
         createTaskBox.remove();
         tasklist.append(addTaskBtn);
+        saveData();
     });
 }
 
@@ -183,7 +185,7 @@ function handleCompletedTasks() {
         const task = check.parentElement;
         if (check.checked === true) {
             task.classList.add("checked");
-
+            
             if (hideCompletedTasks) {
                 hideTask(task);
             }
@@ -192,14 +194,12 @@ function handleCompletedTasks() {
             task.classList.remove("checked");
         }
     });
+    saveData();
 }
 
 let removeBtns = document.querySelectorAll(".remove-task");
 function removeTask(task) {
     task.remove();
-    if (hiddenTasks.indexOf(task) >= 0) {
-        hiddenTasks.splice(task, 1);
-    }
 }
 
 let editBtns = document.querySelectorAll(".edit-task");
@@ -273,6 +273,7 @@ function editTask(task) {
         updateSelectors();
         updateEventListeners();
     });
+    saveData();
 }
 
 // opções gerais da tasklist
@@ -281,6 +282,7 @@ removeAllBtn.addEventListener("click", function() {
     const tasks = document.querySelectorAll(".task");
     tasks.forEach(task => task.remove());
     hideOptMenus();
+    saveData();
 });
 
 const removeCompletedBtn = document.querySelector("#tasklist-opt-rem-completed");
@@ -288,6 +290,7 @@ removeCompletedBtn.addEventListener("click", function() {
     const completedTasks = document.querySelectorAll(".task.checked");
     completedTasks.forEach(completedTask => completedTask.remove());
     hideOptMenus();
+    saveData();
 });
 
 let hideCompletedTasks = false;
@@ -317,6 +320,7 @@ hideCompletedTasksBtn.addEventListener("click", function() {
         updateTaskDisplayButton("eye-off", "Hide completed tasks");
     }
     hideOptMenus();
+    saveData();
 });
 
 function hideTask(task) {
@@ -330,5 +334,21 @@ function updateTaskDisplayButton(icon, label) {
     hideCompletedTasksBtn.querySelector(".icon-opt");
     lucide.createIcons();
 }
+
+function saveData() {
+    localStorage.setItem("data", list.innerHTML);
+}
+
+function getTasklist() {
+    if (localStorage.getItem("data")) {
+        list.innerHTML = localStorage.getItem("data");
+    }
+    document.querySelectorAll(".task.checked")
+        .forEach(task => task.querySelector(".check").checked = true);
+    updateSelectors();
+    updateEventListeners();
+}
+
+getTasklist(); // carrega tasklist salva anteriormente
 
 });

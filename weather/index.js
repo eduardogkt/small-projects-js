@@ -1,3 +1,5 @@
+lucide.createIcons();
+
 const weatherForm = document.querySelector("#weather-form");
 const cityInput = document.querySelector("#input-city");
 
@@ -46,30 +48,34 @@ function displayWeatherInfo(data) {
 
     createCardElement("h1", "city-display", city);
     createCardElement("span", "temperature-display", `${(temp - 273.15).toFixed(1)}°C`);
-    createCardElement("span", "humidity-display", `Humidity: ${humidity}%`);
+    const imgDisplay = document.createElement("img");
+    imgDisplay.id = "img-display";
+    imgDisplay.classList.add("img-display");
+    imgDisplay.src = getWeatherImg(id);
+    card.appendChild(imgDisplay);
     createCardElement("span", "description-display", description);
-    createCardElement("span", "emoji-display", getWeatherEmoji(id));
+    createCardElement("span", "humidity-display", `humidity: ${humidity}%`);
 }
 
-function getWeatherEmoji(weatherId) {
+function getWeatherImg(weatherId) {
 
     switch (true) {
         case (weatherId >= 200 && weatherId < 300): // thunderstorm
-            return "⛈️";
+            return "images/thunderstorm.png";
         case (weatherId >= 300 && weatherId < 400): // drizzle
-            return "🌧️";
+            return "images/drizzle.png";
         case (weatherId >= 500 && weatherId < 600): // rain
-            return "🌧️";
+            return "images/rain.png";
         case (weatherId >= 600 && weatherId < 700): // snow
-            return "❄️";
+            return "images/snow.png";
         case (weatherId >= 700 && weatherId < 800): // haze/fog
-            return "🌫️";
+            return "images/clouds.png";
         case (weatherId === 800): // clear sky
-            return "☀️";
+            return "images/sunny.png";
         case (weatherId > 800): // cloudy
-            return "☁️";
+            return "images/clouds.png";
         default:
-            "❔";
+            "images/";
     }
 }
 

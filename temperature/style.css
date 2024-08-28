@@ -142,8 +142,8 @@ label {
     height: 58px;
     transition: all 100ms ease;
     
-    background-color: hsl(249, 76%, 59%);
-    border: 2px solid hsl(249, 64%, 52%);
+    background-color: hsl(50, 76%, 59%);
+    border: 2px solid hsl(50, 64%, 52%);
 }
 
 .front {
@@ -155,17 +155,17 @@ label {
     left: -2px;
     transition: all 100ms ease;
 
-    background-color: hsl(249, 100%, 71%);
-    border: 2px solid hsl(249, 64%, 52%);
+    background-color: hsl(50, 100%, 71%);
+    border: 2px solid hsl(50, 64%, 52%);
     width: calc(100% + 4px);
 }
 
 .button-convert:hover .front {
     transform: translateY(3px);
-    background-color: hsl(249, 97%, 69%);
+    background-color: hsl(50, 97%, 69%);
 }
 
 .button-convert:active .front {
     transform: translateY(8px);
-    background-color: hsl(249, 100%, 71%);
+    background-color: hsl(50, 100%, 71%);
 }

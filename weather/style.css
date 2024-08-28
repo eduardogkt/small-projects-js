@@ -25,57 +25,73 @@ body {
     user-select: none;
 }
 
-.input-text, .btn {
-    border: 1px solid hsla(0, 0%, 0%, 75%);
-    padding: 1rem 1.1rem;
-    border-radius: 10px;
-    font-size: 0.875rem;
-    font-family: "Roboto Mono", monospace, sans-serif;
+.weather-form {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 330px;
+    border: 1px solid black;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
+.input-text {
+    padding: 0.9rem 1rem;
+    border-radius: 50px 0 0 50px;
+    font-size: 0.875rem;
+    font-family: "Roboto Mono", monospace, sans-serif;
+    width: 100%;
+    background-color: white;
+}
 .input-text:focus {
     outline: none;
 }
 
-.btn {
-    background-color: hsl(200, 50%, 65%);
-    cursor: pointer;
-    color: hsla(0, 0%, 0%, 75%);
+.search-icon {
+    padding: 0.9rem 1rem;
+    background-color: white;
+    border-radius: 0 50px 50px 0;
 }
 
-.btn:hover {
-    background-color: hsl(200, 50%, 60%);
+.icon {
+    width: 15px;
+    height: 15px;
 }
 
 .card {
-    background-image: linear-gradient(to bottom, lightskyblue, burlywood, whitesmoke 80%);
+    background-image: linear-gradient(to bottom, #79b9ea, #fff);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
     padding: 2rem 2.1rem;
-    border: 1px solid black;
     border-radius: 10px;
     min-width: 330px;
     font-family: "Roboto Mono", monospace, sans-serif;
     font-weight: 600;
     user-select: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    gap: 0.5rem;
+    color: hsla(229, 100%, 12%, 0.85);
 
     display: none;
 }
 
-.city-display, .temperature-display {
-    font-size: 2.5rem;
-    color: rgba(0, 0, 0, 75%);
+.city-display {
+    font-size: 2rem;
+    color: white;
 }
 
-.emoji-display {
+.temperature-display {
+    font-size: 3.5rem;
+    color: white;
+}
+
+.img-display {
     font-size: 4rem;
-    padding: 0.5rem;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     text-align: center;
 
     /* background-color: rgba(255, 255, 255, 0.2); */

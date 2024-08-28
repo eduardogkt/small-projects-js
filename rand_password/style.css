@@ -82,7 +82,7 @@ label {
 }
 
 .input-field:has(input:checked) .icon {
-    fill: #7a51f6;
+    fill: hsl(10, 90%, 64%);
 }
 
 .icon {
@@ -140,8 +140,8 @@ label {
     height: 58px;
     transition: all 100ms ease;
     
-    background-color: hsl(255, 76%, 49%);
-    border: 2px solid hsl(255, 64%, 42%);
+    background-color: hsl(10, 76%, 49%);
+    border: 2px solid hsl(10, 64%, 42%);
 }
 
 .front {
@@ -152,19 +152,19 @@ label {
     left: -2px;
     transition: all 100ms ease;
 
-    background-color: hsl(255, 90%, 64%);
-    border: 2px solid hsl(255, 64%, 42%);
+    background-color: hsl(10, 90%, 64%);
+    border: 2px solid hsl(10, 64%, 42%);
     width: calc(100% + 4px);
 }
 
 .button:hover .front {
     transform: translateY(3px);
-    background-color: hsl(255, 100%, 61%);
+    background-color: hsl(10, 100%, 61%);
 }
 
 .button:active .front {
     transform: translateY(8px);
-    background-color: hsl(255, 100%, 61%);
+    background-color: hsl(10, 100%, 61%);
 }
 
 

@@ -51,20 +51,21 @@ a, a:visited, a:hover {
 .main-wrapper, 
 .footer-wrapper {
     display: flex;
-    width: 900px;
+    width: 1000px;
     margin: 0 auto;
 }
 
 .header {
     width: 100%;
     border-bottom: 1px solid var(--black);
-    /* background-color: var(--white); */
+    background-color: var(--white);
 }
 
 .header-wrapper {
     flex-direction: row;
     padding: 1.5rem 0;
     justify-content: space-between;
+    max-width: min(90%, 1000px);
 }
 
 .logo {
@@ -99,10 +100,11 @@ a, a:visited, a:hover {
 .main-wrapper {
     flex-direction: column;
     justify-content: space-between;
+    max-width: min(90%, 1000px);
 }
 
 .hero-wrapper {
-    height: 80vh;
+    height: 73vh;
 }
 
 .hero {
@@ -140,18 +142,19 @@ a, a:visited, a:hover {
 }
 
 .projects {
+    max-width: 100%;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    margin: 0 auto;
+    column-gap: 2rem;
     width: 100%;
 }
 
-.cards-wrapper {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0 auto;
-    column-gap: 2rem;
-}
-
 .card {
-    height: 200px;
+    height: 210px;
     width: auto;
     border: 1px solid var(--black);
     border-radius: 10px;
@@ -159,28 +162,40 @@ a, a:visited, a:hover {
     box-shadow: none;
     transition: all 200ms ease;
     background-color: var(--white);
+    position: relative;
+    overflow: hidden;
 }
 .card:hover {
     transform: translate(0.5rem, -0.5rem);
     box-shadow: -0.5rem 0.5rem 0 var(--black);
     background-color: #b9bbf2;
 }
-
 .card:nth-child(even):hover {
     background-color: #c5e2f7;
 }
-
 .card *, .card:hover * {
     text-decoration: none;
 }
 
+.card-thumb {
+    position: absolute;
+    height: auto;
+    width: 100%;
+}
+
 .card-title {
+    position: absolute;
+    bottom: 0;
+    background-color: var(--white);
+    width: 100%;
+    border-top: 1px solid var(--black);
     font-size: var(--size-h3);
     padding: 1rem 2rem;
-    height: 30%;
+    height: fit-content;
 }
 
 .card-divider {
+    margin-top: 10px;
     height: 1px;
 }
 
@@ -249,5 +264,40 @@ a, a:visited, a:hover {
 .icon {
     color: black;
     width: 13px;
+    height: 13px;
     margin-left: 2px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50px;
+    height: 50px;
+    overflow: hidden;
+    width: 310px;
+}
+
+.search-input {
+    font-family: "Roboto Mono", monospace, sans-serif;
+    padding: 0.5rem 1rem;
+    border-radius: 50px 0 0 50px;
+    height: 100%;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    height: 40px;
+    border-radius: 0 50% 50% 0;
+    height: 100%;
+}
+
+.hide {
+    display: none;
 }

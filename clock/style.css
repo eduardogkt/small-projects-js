@@ -38,10 +38,11 @@ body {
     align-items: center;
     gap: 2rem;
 
-    /* background-color: transparent;
-    backdrop-filter: blur(10px);
+    background-color: transparent;
+    backdrop-filter: blur(20px);
     color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2); */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .clock {
@@ -80,10 +81,10 @@ body {
     align-items: center;
     float: right;
 
-    /* background-color: transparent;
+    background-color: transparent;
     backdrop-filter: blur(10px);
     color: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.2); */
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .adjust-menu {
