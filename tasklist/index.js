@@ -120,8 +120,9 @@ function addTask() {
         lucide.createIcons();
         updateSelectors();
         updateEventListeners();
-        addTask();  // continua adicionando tarefas
+        addTaskBtn.remove();
         saveData();
+        addTask();  // continua adicionando tarefas
     });
     
     cancelTaskBtn.addEventListener("click", function() {
@@ -259,6 +260,7 @@ function editTask(task) {
         lucide.createIcons();
         updateSelectors();
         updateEventListeners();
+        saveData();
     });
     
     cancelTaskBtn.addEventListener("click", function() {
@@ -272,8 +274,8 @@ function editTask(task) {
         
         updateSelectors();
         updateEventListeners();
+        saveData();
     });
-    saveData();
 }
 
 // opções gerais da tasklist
