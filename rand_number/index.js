@@ -10,7 +10,7 @@ const randDecimalsField = document.querySelector("#decimals-rand-field");
 const copyButton = document.querySelector("#button-copy");
 
 // reseta o checkbox quando recarrega a pagina
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     randFloat.checked = false;
 });
 
@@ -19,31 +19,25 @@ function generateRandNumber(min, max, decimalPlaces) {
     min = Math.ceil(min);
     max = Math.floor(max);
 
-    let randNumber = (Math.random() * (max - min)) + min;
+    let randNumber = Math.random() * (max - min) + min;
     let precision = Math.pow(10, decimalPlaces);
     randNumber = Math.floor(randNumber * precision) / precision;
-    
+
     return randNumber;
 }
 
 function assertRange(min, max) {
-    min = (min < Number.MIN_SAFE_INTEGER) ?
-           Number.MIN_SAFE_INTEGER :
-           min;
-
-    max = (max < Number.MAX_SAFE_INTEGER) ?
-           Number.MAX_SAFE_INTEGER :
-           max;
+    min = min < Number.MIN_SAFE_INTEGER ? Number.MIN_SAFE_INTEGER : min;
+    max = max > Number.MAX_SAFE_INTEGER ? Number.MAX_SAFE_INTEGER : max;
 }
 
 // enables and diasables the decimals field
-randFloat.addEventListener("click", function() {
+randFloat.addEventListener("click", function () {
     let float = randFloat.checked;
     if (float) {
         randDecimals.disabled = false;
         randDecimalsField.classList.remove("disabled");
-    }
-    else {
+    } else {
         randDecimals.disabled = true;
         randDecimalsField.classList.add("disabled");
     }
@@ -56,15 +50,15 @@ function validateInput(min, max, decimals) {
         return false;
     }
     if (decimals < 0) {
-        randDisplay.style.color = "red"
-        randDisplay.textContent = "decimals cannot be negative"
+        randDisplay.style.color = "red";
+        randDisplay.textContent = "decimals cannot be negative";
         return false;
     }
     return true;
 }
 
 // genearates the random number and displays it
-randButton.addEventListener("click", function() {
+randButton.addEventListener("click", function () {
     randDisplay.style.color = "black";
     let min = Number(randMin.value);
     let max = Number(randMax.value);
@@ -77,17 +71,17 @@ randButton.addEventListener("click", function() {
     assertRange(min, max);
 
     let randNumber = generateRandNumber(min, max, decimals);
-    
-    let integer = !(randFloat.checked);
+
+    let integer = !randFloat.checked;
     if (integer) {
         randNumber = Math.round(randNumber);
     }
-    
+
     randDisplay.textContent = randNumber;
 });
 
 // displays the copy confirmation message
-copyButton.addEventListener("click", function() {
+copyButton.addEventListener("click", function () {
     let text = randDisplay.textContent;
     navigator.clipboard.writeText(text);
 
@@ -98,13 +92,13 @@ copyButton.addEventListener("click", function() {
 
 function fadeCopyMessage() {
     let copyMessage = document.querySelector(".copy-message");
-    copyMessage.style.opacity = '0';
+    copyMessage.style.opacity = "0";
 }
 
 function addCopyMessage() {
     let docWrapper = document.querySelector(".wrapper");
 
-    var copyMesssage = document.createElement('div');
+    var copyMesssage = document.createElement("div");
     copyMesssage.classList.add("copy-message");
     copyMesssage.textContent = "copied to the clipboard";
     docWrapper.appendChild(copyMesssage);
