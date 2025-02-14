@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script defer src="index.js"></script>
+  <title>music player</title>
+</head>
+<body>
+  <div class="wrapper">
+    <h1 class="title">music player</h1>
+
+    <div class="panel">
+      <section class="song-thumb">
+          <img src="../assets/images/song_thumb.jpg" height="200px" width="200px" alt="song thumb">
+      </section>
+     
+      <section class="song-infos">
+        <span class="song-title" id="title">Name</span>
+        <span class="song-artist" id="artist">Artist</span>
+      </section>
+
+      <audio id="song">
+        <source src="../assets/audio/player_beach.mp3" type="audio/mpeg">
+      </audio>
+
+      <input type="range" class="song-slider" id="progress">
+
+      <section class="song-btns">
+        <button class="btn" id="back">
+          <i data-lucide="skip-back" class="icon"></i>
+        </button>
+        <button class="btn" id="play">
+          <i data-lucide="play" class="icon"></i>
+        </button>
+        <button class="btn" id="forward">
+          <i data-lucide="skip-forward" class="icon"></i>
+        </button>
+      </section>
+    </div>
+    
+  </div>
+</body>
+<script src="https://unpkg.com/lucide@latest"></script>
+</html>
