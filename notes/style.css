@@ -133,12 +133,11 @@ body {
     display: flex;
     justify-content: flex-end;
     opacity: 0;
-    transition: opacity 0.1s ease-out;
+    transition: opacity 0.1s ease-in;
     gap: 0.2rem;
 }
 .note:hover .options {
     opacity: 1;
-    transition: opacity 0.1s ease-in;
 }
 
 .note-input {

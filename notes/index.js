@@ -81,11 +81,13 @@ function pinNote(btn) {
     document.querySelector("#pinned-notes").classList.remove("hide");
     const note = btn.closest(".note");
 
+    // desfixando nota
     if (btn.querySelector(".icon").classList.contains("filled")) {
         btn.querySelector(".icon").classList.remove("filled");
         document.querySelector("#notes").append(note);
         checkPinnedNotes();
     }
+    // fixando nota
     else {
         btn.querySelector(".icon").classList.add("filled");
         document.querySelector("#pinned-notes").append(note);
@@ -93,6 +95,7 @@ function pinNote(btn) {
     }
 }
 
+// checa as notas fixadas, se não houver notas, remove a seção de fixados
 function checkPinnedNotes() {
     const pinnedNotes = document.querySelector("#pinned-notes");
     if (pinnedNotes.children.length === 0) {

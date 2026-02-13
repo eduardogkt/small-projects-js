@@ -1,196 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8" lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="icon" href="./assets/icons/page_icon1.svg">
-  <script defer src="index.js"></script>
-  <title>small projects</title>
-</head>
-<body>
-<div class="wrapper">
+  <head>
+    <meta charset="UTF-8" lang="en" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="icon" href="./assets/icons/page_icon1.svg" />
+    <script defer src="index.js"></script>
+    <title>small projects</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header-wrapper">
+          <span class="logo">small projects</span>
+          <nav class="menu">
+            <li>
+              <a
+                class="link"
+                href="https://github.com/eduardogkt"
+                target="_blank"
+                >github<i data-lucide="arrow-up-right" class="icon"></i
+              ></a>
+            </li>
+            <li><a class="link" id="about-me-button">about me</a></li>
+          </nav>
+        </div>
+      </header>
 
-  <header class="header">
-    <div class="header-wrapper">
-      <span class="logo">small projects</span>
-      <nav class="menu">
-        <li><a class="link" href="https://github.com/eduardogkt" target="_blank">github<i data-lucide="arrow-up-right" class="icon"></i></a></li>
-        <li><a class="link" id="about-me-button">about me</a></li>
-      </nav>
-    </div>
-  </header>
-
-  <div class="about-me" id="about-me-card">
-    <div class="profile">
-      <img width="100px" height="100px" src="assets/images/profile.jpg" alt="a profile picture of myself.">
-    </div>
-    <div class="about">
-      <span>
-        Hi! My name is Eduardo. I'm an undergraduated Computer Science student
-        at Universidade Federal do Paraná.
-      </span>
-    </div>
-  </div>
-
-  <main class="main">
-    <div class="main-wrapper">
-
-      <div class="hero-wrapper">
-        <section class="hero">
-          <h1 class="hero-title">small projects.</h1>
-          <hr class="hero-divider">
-          <h2 class="hero-subtitle">hi there!</h2>
-          <p class="hero-description">here i store the small projects that i developed while learning javascript.</p>
-        </section>
+      <div class="about-me" id="about-me-card">
+        <div class="profile">
+          <img
+            width="100px"
+            height="100px"
+            src="assets/images/profile.jpg"
+            alt="a profile picture of myself."
+          />
+        </div>
+        <div class="about">
+          <span>
+            oLá! Meu nome é Eduardo. Sou estudante de Ciẽncia da Computação na
+            Universidade Federal do Paraná.
+          </span>
+        </div>
       </div>
-      
-      <section class="projects">
 
-        <div class="search">
-          <input type="text" class="search-input" placeholder="search...">
-          <div class="search-icon">
-            <i data-lucide="search" class="icon"></i>
+      <main class="main">
+        <div class="main-wrapper">
+          <div class="hero-wrapper">
+            <section class="hero">
+              <h1 class="hero-title">small projects.</h1>
+              <hr class="hero-divider" />
+              <h2 class="hero-subtitle">hi there!</h2>
+              <p class="hero-description">
+                aqui eu armazeno os projetos pequenos que eu desenvolvi enquanto
+                aprendia javascript.
+              </p>
+            </section>
           </div>
+
+          <section class="projects">
+            <div class="search">
+              <input type="text" class="search-input" placeholder="search..." />
+              <div class="search-icon">
+                <i data-lucide="search" class="icon"></i>
+              </div>
+            </div>
+
+            <div class="cards-grid">
+              <div class="card">
+                <a href="./counter/index.html">
+                  <img
+                    src="./assets/images/thumbnails/counter.png"
+                    alt=""
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">counter</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./rand_number/index.html">
+                  <img
+                    src="./assets/images/thumbnails/rand_number.png"
+                    alt=""
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">random number generator</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./temperature/index.html">
+                  <img
+                    src="./assets/images/thumbnails/temperature.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">temperature conversor</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./rand_password/index.html">
+                  <img
+                    src="./assets/images/thumbnails/rand_password.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">random password generator</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./clock/index.html">
+                  <img
+                    src="./assets/images/thumbnails/clock.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">digital clock</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./stopwatch/index.html">
+                  <img
+                    src="./assets/images/thumbnails/stopwatch.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">stopwatch</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./calculator/index.html">
+                  <img
+                    src="./assets/images/thumbnails/calculator.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">calculator</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./rock_paper_scissors/index.html">
+                  <img
+                    src="./assets/images/thumbnails/rock_paper_scissors.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">rock, paper, scissors game</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./image_slider/index.html">
+                  <img
+                    src="./assets/images/thumbnails/image_slider.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">image slider</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./drawing/index.html">
+                  <img
+                    src="./assets/images/thumbnails/drawing.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">drawing canvas</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./pokemon_fetch/index.html">
+                  <img
+                    src="./assets/images/thumbnails/pokemon_fetch.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">pokemon sprite fetch</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./weather/index.html">
+                  <img
+                    src="./assets/images/thumbnails/weather.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">weather fetch</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./tasklist/index.html">
+                  <img
+                    src="./assets/images/thumbnails/tasklist.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">tasklist</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./quiz/index.html">
+                  <img
+                    src="./assets/images/thumbnails/quiz.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">quiz</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./notes/index.html">
+                  <img
+                    src="./assets/images/thumbnails/notes.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">notes app</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./rand_quote/index.html">
+                  <img
+                    src="./assets/images/thumbnails/rand_quote.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">random quote generator</h3>
+                </a>
+              </div>
+
+              <div class="card">
+                <a href="./music_player/index.html">
+                  <img
+                    src="./assets/images/thumbnails/music_player.png"
+                    alt="card image"
+                    class="card-thumb"
+                  />
+                  <h3 class="card-title">music player</h3>
+                </a>
+              </div>
+
+              <div class="card" style="display: none">
+                <h3 class="card-title">some project</h3>
+              </div>
+            </div>
+          </section>
         </div>
+      </main>
 
-        <div class="cards-grid">
-
-          <div class="card">
-            <a href="./counter/index.html">
-              <img src="./assets/images/thumbnails/counter.png" alt="" class="card-thumb">
-              <h3 class="card-title">counter</h3>
-            </a>
-          </div>
-          
-          <div class="card">
-            <a href="./rand_number/index.html">
-              <img src="./assets/images/thumbnails/rand_number.png" alt="" class="card-thumb">
-              <h3 class="card-title">random number generator</h3>
-            </a>
-          </div>
-          
-          <div class="card">
-            <a href="./temperature/index.html">
-              <img src="./assets/images/thumbnails/temperature.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">temperature conversor</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./rand_password/index.html">
-              <img src="./assets/images/thumbnails/rand_password.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">random password generator</h3>
-            </a>
-          </div>
-          
-          <div class="card">
-            <a href="./clock/index.html">
-              <img src="./assets/images/thumbnails/clock.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">digital clock</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./stopwatch/index.html">
-              <img src="./assets/images/thumbnails/stopwatch.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">stopwatch</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./calculator/index.html">
-              <img src="./assets/images/thumbnails/calculator.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">calculator</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./rock_paper_scissors/index.html">
-              <img src="./assets/images/thumbnails/rock_paper_scissors.png" alt="card image" class="card-thumb">
-                <h3 class="card-title">rock, paper, scissors game</h3>
-            </a>
-          </div>
-          
-          <div class="card">
-            <a href="./image_slider/index.html">
-              <img src="./assets/images/thumbnails/image_slider.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">image slider</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./drawing/index.html">
-              <img src="./assets/images/thumbnails/drawing.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">drawing canvas</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./pokemon_fetch/index.html">
-              <img src="./assets/images/thumbnails/pokemon_fetch.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">pokemon sprite fetch</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./weather/index.html">
-              <img src="./assets/images/thumbnails/weather.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">weather fetch</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./tasklist/index.html">
-              <img src="./assets/images/thumbnails/tasklist.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">tasklist</h3>
-            </a>
-          </div>
-          
-          <div class="card">
-            <a href="./quiz/index.html">
-              <img src="./assets/images/thumbnails/quiz.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">quiz</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./notes/index.html">
-              <img src="./assets/images/thumbnails/notes.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">notes app</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./rand_quote/index.html">
-              <img src="./assets/images/thumbnails/rand_quote.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">random quote generator</h3>
-            </a>
-          </div>
-
-          <div class="card">
-            <a href="./music_player/index.html">
-              <img src="./assets/images/thumbnails/music_player.png" alt="card image" class="card-thumb">
-              <h3 class="card-title">music player</h3>
-            </a>
-          </div>
-
-          <div class="card" style="display:none;">
-            <h3 class="card-title">some project</h3>
-          </div>
+      <footer class="footer">
+        <div class="footer-wrapper">
+          <span>feito por eduardo tanaka &copy; 2024.</span>
         </div>
-
-      </section>
+      </footer>
     </div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-wrapper">
-      <span>feito por eduardo tanaka &copy; 2024.</span>
-    </div>
-  </footer>
-
-  </div>
-</body>
-<script src="https://unpkg.com/lucide@latest"></script>
+  </body>
+  <script src="https://unpkg.com/lucide@latest"></script>
 </html>
